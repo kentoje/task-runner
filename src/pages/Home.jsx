@@ -1,15 +1,13 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { View, StyleSheet } from 'react-native'
-import { useFetch } from '../hooks/fetch/useFetch'
-import { serializeUsers } from '../lib/serialize'
 import UsersList from '../components/Users/UsersList'
 import Loader from '../components/Loader'
 import Map from '../components/Map'
 import { getMarkersFromUsers } from '../lib/map'
+import { UsersContext } from '../context/usersContext'
 
 const Home = () => {
-  const url = 'http://jsonplaceholder.typicode.com/users'
-  const [users, loading] = useFetch(url)(serializeUsers)
+  const { users, loading } = useContext(UsersContext)
 
   return (
     <>
