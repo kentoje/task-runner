@@ -2,6 +2,7 @@ import React, { useReducer, useEffect } from 'react'
 import { fetchReducer, initialState } from './reducer'
 import { ENUM_TYPES } from './constants'
 
+/* eslint-disable react-hooks/rules-of-hooks */
 const useFetch = (url) => (serialize = (rawData) => rawData) => {
   const [state, dispatch] = useReducer(fetchReducer, initialState)
 
@@ -30,7 +31,7 @@ const useFetch = (url) => (serialize = (rawData) => rawData) => {
     }
 
     fetchUrl()
-  }, [])
+  }, [serialize])
 
   return [state.result, state.loading, state.error]
 }
