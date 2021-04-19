@@ -7,16 +7,8 @@ const fullName = (name) => {
   }
 }
 
-const serializeUsers = (users) => (
-  users.map(({
-    id,
-    name,
-    username,
-    email,
-    phone,
-    company,
-    address,
-  }) => ({
+const serializeUsers = (users) =>
+  users.map(({ id, name, username, email, phone, company, address }) => ({
     id,
     ...fullName(name),
     username,
@@ -31,8 +23,5 @@ const serializeUsers = (users) => (
     albums: `/albums?userId=${id}`,
     posts: `/posts?userId=${id}`,
   }))
-)
 
-export {
-  serializeUsers,
-}
+export { serializeUsers }

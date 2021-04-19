@@ -5,16 +5,12 @@ import { serializeUsers } from '../lib/serialize'
 import UsersList from '../components/Users/UsersList'
 
 const Home = () => {
-  const [users, loading, error] = useFetch('http://jsonplaceholder.typicode.com/users')(serializeUsers)
+  const [users, loading, error] = useFetch(
+    'http://jsonplaceholder.typicode.com/users'
+  )(serializeUsers)
 
   return (
-    <View>
-      {
-        !loading
-          ? <UsersList users={users} />
-          : <Text>Loading</Text>
-      }
-    </View>
+    <View>{!loading ? <UsersList users={users} /> : <Text>Loading</Text>}</View>
   )
 }
 

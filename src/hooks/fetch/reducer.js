@@ -35,7 +35,4 @@ const reducer = (state, action) => {
   return state
 }
 
-export {
-  initialState,
-  reducer as fetchReducer,
-}
+export { initialState, reducer as fetchReducer }

@@ -32,11 +32,7 @@ const useFetch = (url) => (serialize = (rawData) => rawData) => {
     fetchUrl()
   }, [])
 
-  return [
-    state.result,
-    state.loading,
-    state.error,
-  ]
+  return [state.result, state.loading, state.error]
 }
 
 export { useFetch }

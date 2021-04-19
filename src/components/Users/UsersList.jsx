@@ -4,10 +4,7 @@ import UsersItem from './UsersItem'
 
 const UsersList = ({ users }) => {
   const renderItem = ({ item: { firstName, lastName } }) => (
-    <UsersItem
-      firstName={firstName}
-      lastName={lastName}
-    />
+    <UsersItem firstName={firstName} lastName={lastName} />
   )
 
   return (

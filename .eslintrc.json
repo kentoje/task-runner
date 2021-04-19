@@ -1,0 +1,11 @@
+{
+  "plugins": [
+  ],
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "parser": "babel-eslint",
+  "extends": ["@react-native-community", "prettier"]
+}
