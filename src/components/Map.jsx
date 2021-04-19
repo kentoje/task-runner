@@ -2,7 +2,7 @@ import React from 'react'
 import { StyleSheet } from 'react-native'
 import MapView, { PROVIDER_GOOGLE, Marker } from 'react-native-maps'
 
-const Map = ({ data }) => {
+const Map = ({ data, navigation }) => {
   return (
     <MapView
       style={styles.map}
@@ -22,6 +22,9 @@ const Map = ({ data }) => {
             longitude: marker.lng,
           }}
           title={marker.title}
+          onPress={() =>
+            navigation.navigate('Dashboard', { userId: marker.id })
+          }
         />
       ))}
     </MapView>

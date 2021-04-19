@@ -6,7 +6,7 @@ import Map from '../components/Map'
 import { getMarkersFromUsers } from '../lib/map'
 import { UsersContext } from '../context/usersContext'
 
-const Home = () => {
+const Home = ({ navigation }) => {
   const { users, loading } = useContext(UsersContext)
 
   return (
@@ -14,7 +14,7 @@ const Home = () => {
       {!loading ? (
         <View style={styles.container}>
           <UsersList users={users} />
-          <Map data={getMarkersFromUsers(users)} />
+          <Map data={getMarkersFromUsers(users)} navigation={navigation} />
         </View>
       ) : (
         <Loader />
