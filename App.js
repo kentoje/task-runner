@@ -1,6 +1,7 @@
 import React from 'react'
 import { StatusBar, SafeAreaView, StyleSheet } from 'react-native'
-import Home from './src/pages/Home'
+import { NavigationContainer } from '@react-navigation/native'
+import Router from './src/router/Router'
 
 const App = () => {
   return (
@@ -8,7 +9,9 @@ const App = () => {
       <StatusBar barStyle="light-content" />
       <SafeAreaView style={styles.statusBackground} />
       <SafeAreaView style={styles.appBackground}>
-        <Home />
+        <NavigationContainer>
+          <Router />
+        </NavigationContainer>
       </SafeAreaView>
     </>
   )
