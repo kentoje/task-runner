@@ -16,8 +16,8 @@ const serializeUsers = (users) =>
     email,
     phone,
     geoCode: {
-      lat: address.geo.lat,
-      lng: address.geo.lng,
+      lat: Number(address.geo.lat),
+      lng: Number(address.geo.lng),
     },
     todos: `/todos?userId=${id}`,
     albums: `/albums?userId=${id}`,
