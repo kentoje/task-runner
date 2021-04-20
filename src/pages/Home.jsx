@@ -12,6 +12,10 @@ const Home = ({ navigation }) => {
   const { users, loading } = useContext(UsersContext)
   const [state, filter] = useFilter()
 
+  const navigate = (id) => {
+    navigation.navigate('Dashboard', { userId: id })
+  }
+
   // TODO: Refacto this crap!
   useEffect(() => {
     if (!loading) {
@@ -30,7 +34,7 @@ const Home = ({ navigation }) => {
             placeholder="Search for a user"
           />
           <UsersList users={state} />
-          <Map data={getMarkersFromUsers(state)} navigation={navigation} />
+          <Map data={getMarkersFromUsers(state)} navigate={navigate} />
         </View>
       ) : (
         <Loader />

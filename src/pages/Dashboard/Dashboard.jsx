@@ -2,6 +2,8 @@ import React, { useContext, useState, useEffect } from 'react'
 import { ScrollView, StyleSheet } from 'react-native'
 import { UsersContext } from '../../context/usersContext'
 import UserInfos from './components/UserInfos'
+import Map from '../../components/Map'
+import { getMarkersFromUsers } from '../../lib/map'
 import TodoList from './components/TodoList'
 import Album from './components/Albums'
 import Posts from './components/Posts'
@@ -61,6 +63,7 @@ const Dashboard = ({ route }) => {
       {currentUser ? (
         <ScrollView style={styles.container}>
           <UserInfos user={currentUser} />
+          <Map data={getMarkersFromUsers([currentUser])} navigate={() => {}} />
           {todos.length ? <TodoList todos={todos} /> : null}
           {albums.length ? <Album albums={albums} /> : null}
           {posts.length ? <Posts posts={posts} /> : null}

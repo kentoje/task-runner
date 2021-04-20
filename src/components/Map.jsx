@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { StyleSheet } from 'react-native'
 import MapView, { PROVIDER_GOOGLE, Marker } from 'react-native-maps'
 
-const Map = ({ data, navigation }) => {
+const Map = ({ data, navigate }) => {
   const [focus, setFocus] = useState({ lat: 0, lng: 0 })
 
   useEffect(() => {
@@ -33,9 +33,9 @@ const Map = ({ data, navigation }) => {
             longitude: marker.lng,
           }}
           title={marker.title}
-          onPress={() =>
-            navigation.navigate('Dashboard', { userId: marker.id })
-          }
+          onPress={() => {
+            navigate(marker.id)
+          }}
         />
       ))}
     </MapView>
