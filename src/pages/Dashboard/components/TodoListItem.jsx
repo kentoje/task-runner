@@ -1,13 +1,15 @@
 import React from 'react'
 import { Text, View, Switch, StyleSheet } from 'react-native'
 
-const TodoListItem = ({ item: { title, completed } }) => {
+const TodoListItem = ({ item: { id, title, completed }, callback }) => {
   return (
     <View style={styles.todo}>
       <Text style={styles.text}>{title}</Text>
       <Switch
+        onChange={() => {
+          callback(id)
+        }}
         style={styles.switch}
-        trackColor={{ true: '#4169e1' }}
         value={completed}
       />
     </View>

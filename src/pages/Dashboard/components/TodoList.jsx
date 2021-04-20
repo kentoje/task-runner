@@ -1,15 +1,26 @@
 import React from 'react'
-import { Text, View, StyleSheet, FlatList } from 'react-native'
+import { Text, View, StyleSheet, FlatList, Button } from 'react-native'
 import TodoListItem from './TodoListItem'
 
-const TodoList = ({ todos }) => {
+const TodoList = ({ todos, addTodo, toggleTodo, openModal }) => {
+  const renderItem = ({ item }) => (
+    <TodoListItem item={item} callback={toggleTodo} />
+  )
+
   return (
     <>
       <View style={styles.container}>
         <Text style={styles.title}>Todo List</Text>
+        <Button
+          onPress={() => {
+            openModal()
+          }}
+          title="Foo"
+          color="#841584"
+        />
         <FlatList
           data={todos}
-          renderItem={TodoListItem}
+          renderItem={renderItem}
           keyExtractor={(todo) => String(todo.id)}
         />
       </View>
