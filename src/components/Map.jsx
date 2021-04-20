@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { StyleSheet } from 'react-native'
+import { StyleSheet, Dimensions } from 'react-native'
 import MapView, { PROVIDER_GOOGLE, Marker } from 'react-native-maps'
 
 const Map = ({ data, navigate }) => {
@@ -43,12 +43,9 @@ const Map = ({ data, navigate }) => {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
   map: {
     width: '100%',
-    height: 300,
+    height: Dimensions.get('window').height / 2,
   },
 })
 

@@ -1,5 +1,5 @@
-import React, { useContext, useEffect, useState } from 'react'
-import { View, StyleSheet, TextInput } from 'react-native'
+import React, { useContext, useEffect } from 'react'
+import { ScrollView, StyleSheet, TextInput, View, Text } from 'react-native'
 import UsersList from '../components/Users/UsersList'
 import Loader from '../components/Loader'
 import Map from '../components/Map'
@@ -26,16 +26,20 @@ const Home = ({ navigation }) => {
   return (
     <>
       {!loading ? (
-        <View style={styles.container}>
-          <TextInput
-            onChangeText={(event) => {
-              filter(users, event)
-            }}
-            placeholder="Search for a user"
-          />
-          <UsersList users={state} />
+        <ScrollView>
+          <Text style={styles.title}>Users</Text>
+          <View style={styles.container}>
+            <TextInput
+              onChangeText={(event) => {
+                filter(users, event)
+              }}
+              placeholder="Search for a user"
+              style={styles.input}
+            />
+            <UsersList users={state} navigate={navigate} />
+          </View>
           <Map data={getMarkersFromUsers(state)} navigate={navigate} />
-        </View>
+        </ScrollView>
       ) : (
         <Loader />
       )}
@@ -45,7 +49,21 @@ const Home = ({ navigation }) => {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    padding: 8,
+  },
+  title: {
+    fontSize: 20,
+    textAlign: 'center',
+    marginTop: 16,
+    marginBottom: 8,
+  },
+  input: {
+    borderRadius: 16,
+    fontSize: 16,
+    borderColor: 'darkgrey',
+    borderWidth: 2,
+    padding: 8,
+    marginBottom: 16,
   },
 })
 

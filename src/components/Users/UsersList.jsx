@@ -1,21 +1,22 @@
 import React from 'react'
-import { FlatList, View, ScrollView } from 'react-native'
+import { FlatList, View } from 'react-native'
+import { TouchableHighlight } from 'react-native-gesture-handler'
 import UsersItem from './UsersItem'
 
-const UsersList = ({ users }) => {
-  const renderItem = ({ item: { firstName, lastName } }) => (
-    <UsersItem firstName={firstName} lastName={lastName} />
+const UsersList = ({ users, navigate }) => {
+  const renderItem = ({ item: { firstName, lastName, id } }) => (
+    <TouchableHighlight onPress={() => navigate(id)}>
+      <UsersItem firstName={firstName} lastName={lastName} />
+    </TouchableHighlight>
   )
 
   return (
     <View>
-      <ScrollView>
-        <FlatList
-          data={users}
-          renderItem={renderItem}
-          keyExtractor={(user) => String(user.id)}
-        />
-      </ScrollView>
+      <FlatList
+        data={users}
+        renderItem={renderItem}
+        keyExtractor={(user) => String(user.id)}
+      />
     </View>
   )
 }
