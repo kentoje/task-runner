@@ -1,5 +1,12 @@
 import React from 'react'
-import { Text, View, StyleSheet, FlatList, Button } from 'react-native'
+import {
+  Text,
+  View,
+  StyleSheet,
+  FlatList,
+  Button,
+  TouchableHighlight,
+} from 'react-native'
 import TodoListItem from './TodoListItem'
 
 const TodoList = ({ todos, addTodo, toggleTodo, openModal }) => {
@@ -10,14 +17,17 @@ const TodoList = ({ todos, addTodo, toggleTodo, openModal }) => {
   return (
     <>
       <View style={styles.container}>
-        <Text style={styles.title}>Todo List</Text>
-        <Button
-          onPress={() => {
-            openModal()
-          }}
-          title="Add a todo!"
-          color="#841584"
-        />
+        <View style={styles.header}>
+          <View />
+          <Text style={styles.title}>Todo List</Text>
+          <TouchableHighlight
+            onPress={() => {
+              openModal()
+            }}
+          >
+            <Text style={styles.button}>+</Text>
+          </TouchableHighlight>
+        </View>
         <FlatList
           data={todos}
           renderItem={renderItem}
@@ -35,21 +45,29 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     marginTop: 16,
   },
+  header: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginBottom: 24,
+  },
   title: {
     fontSize: 18,
     textAlign: 'center',
-    marginBottom: 16,
     fontWeight: '600',
   },
   todo: {
     flexDirection: 'row',
     marginBottom: 16,
   },
+  button: {
+    fontSize: 30,
+  },
   text: {
     fontSize: 16,
   },
   switch: {
-    marginLeft: 'auto',
+    marginLeft: 30,
   },
 })
 

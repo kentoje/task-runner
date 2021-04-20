@@ -1,5 +1,7 @@
 import React from 'react'
 import { Text, View, StyleSheet } from 'react-native'
+import Map from '../../../components/Map'
+import { getMarkersFromUsers } from '../../../lib/map'
 
 const UserInfos = ({ user }) => {
   return (
@@ -10,7 +12,12 @@ const UserInfos = ({ user }) => {
       </Text>
       <Text style={styles.item}>{user.companyName}</Text>
       <Text style={styles.item}>{user.email}</Text>
-      <Text style={styles.item}>{user.phone}</Text>
+      <Text style={[styles.item, styles.phone]}>{user.phone}</Text>
+      <Map
+        style={styles.map}
+        data={getMarkersFromUsers([user])}
+        navigate={() => {}}
+      />
     </View>
   )
 }
@@ -30,6 +37,9 @@ const styles = StyleSheet.create({
   item: {
     fontSize: 16,
     marginBottom: 4,
+  },
+  phone: {
+    marginBottom: 16,
   },
 })
 

@@ -2,8 +2,6 @@ import React, { useContext, useState, useEffect } from 'react'
 import { ScrollView, StyleSheet } from 'react-native'
 import { UsersContext } from '../../context/usersContext'
 import UserInfos from './components/UserInfos'
-import Map from '../../components/Map'
-import { getMarkersFromUsers } from '../../lib/map'
 import TodoList from './components/TodoList'
 import AlbumsList from './components/AlbumsList'
 import PostsList from './components/PostsList'
@@ -99,10 +97,6 @@ const Dashboard = ({ route }) => {
           />
           <ScrollView style={styles.container}>
             <UserInfos user={currentUser} />
-            <Map
-              data={getMarkersFromUsers([currentUser])}
-              navigate={() => {}}
-            />
             {todos.length ? (
               <TodoList
                 todos={todos}

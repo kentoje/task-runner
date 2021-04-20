@@ -12,11 +12,11 @@ const PhotosListItem = ({ item }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    marginRight: 15,
   },
   image: {
-    width: 80,
-    height: 80,
-    backgroundColor: 'red',
+    width: 50,
+    height: 50,
   },
 })
 

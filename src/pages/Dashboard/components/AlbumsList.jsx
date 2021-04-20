@@ -8,7 +8,7 @@ const AlbumsList = ({ albums }) => {
 
   return (
     <View style={styles.container}>
-      <Text>Albums</Text>
+      <Text style={styles.title}>Albums</Text>
       <FlatList
         data={albums}
         renderItem={renderItem}
@@ -20,7 +20,16 @@ const AlbumsList = ({ albums }) => {
 
 const styles = StyleSheet.create({
   container: {
-    padding: 8,
+    padding: 16,
+    backgroundColor: 'lavender',
+    borderRadius: 8,
+    marginTop: 16,
+  },
+  title: {
+    fontSize: 18,
+    textAlign: 'center',
+    fontWeight: '600',
+    marginBottom: 24,
   },
 })
 

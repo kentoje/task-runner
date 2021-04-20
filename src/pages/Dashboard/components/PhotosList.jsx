@@ -8,9 +8,9 @@ const PhotosList = ({ photos }) => {
 
   return (
     <View style={styles.container}>
-      <Text>Photos</Text>
       <FlatList
         data={photos}
+        horizontal
         renderItem={renderItem}
         keyExtractor={(photo) => String(photo.id)}
       />
@@ -20,7 +20,7 @@ const PhotosList = ({ photos }) => {
 
 const styles = StyleSheet.create({
   container: {
-    padding: 8,
+    marginBottom: 24,
   },
 })
 

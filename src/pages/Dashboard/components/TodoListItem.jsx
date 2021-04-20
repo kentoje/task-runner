@@ -5,14 +5,14 @@ const TodoListItem = ({ item: { id, title, completed }, callback }) => {
   return (
     <View style={styles.todo}>
       <Text style={styles.text}>{title}</Text>
-      <Text style={styles.text}>{id}</Text>
-      <Switch
-        onChange={() => {
-          callback(id)
-        }}
-        style={styles.switch}
-        value={completed}
-      />
+      <View style={styles.switch}>
+        <Switch
+          onChange={() => {
+            callback(id)
+          }}
+          value={completed}
+        />
+      </View>
     </View>
   )
 }
@@ -20,10 +20,12 @@ const TodoListItem = ({ item: { id, title, completed }, callback }) => {
 const styles = StyleSheet.create({
   todo: {
     flexDirection: 'row',
+    alignItems: 'center',
     marginBottom: 16,
   },
   text: {
     fontSize: 16,
+    flex: 1,
   },
   switch: {
     marginLeft: 'auto',

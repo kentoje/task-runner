@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Text, View } from 'react-native'
+import { Text, View, StyleSheet } from 'react-native'
 import PhotosList from './PhotosList'
 import { serializePhotos } from '../../../lib/serialize'
 
@@ -18,10 +18,17 @@ const AlbumsListItem = ({ item }) => {
 
   return (
     <View>
-      <Text>{item.title}</Text>
+      <Text style={styles.title}>{item.title}</Text>
       {photos.length ? <PhotosList photos={photos} /> : null}
     </View>
   )
 }
+
+const styles = StyleSheet.create({
+  title: {
+    fontSize: 16,
+    marginBottom: 16,
+  },
+})
 
 export default AlbumsListItem
