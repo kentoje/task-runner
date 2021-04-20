@@ -5,8 +5,8 @@ import UserInfos from './components/UserInfos'
 import Map from '../../components/Map'
 import { getMarkersFromUsers } from '../../lib/map'
 import TodoList from './components/TodoList'
-import Album from './components/Albums'
-import Posts from './components/Posts'
+import AlbumsList from './components/AlbumsList'
+import PostsList from './components/PostsList'
 import Loader from '../../components/Loader'
 
 const Dashboard = ({ route }) => {
@@ -65,8 +65,8 @@ const Dashboard = ({ route }) => {
           <UserInfos user={currentUser} />
           <Map data={getMarkersFromUsers([currentUser])} navigate={() => {}} />
           {todos.length ? <TodoList todos={todos} /> : null}
-          {albums.length ? <Album albums={albums} /> : null}
-          {posts.length ? <Posts posts={posts} /> : null}
+          {albums.length ? <AlbumsList albums={albums} /> : null}
+          {posts.length ? <PostsList posts={posts} /> : null}
         </ScrollView>
       ) : (
         <Loader />

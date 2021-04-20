@@ -1,10 +1,10 @@
 import React from 'react'
 import { Text, View, StyleSheet } from 'react-native'
 
-const Album = ({ albums }) => {
+const PostsList = ({ posts }) => {
   return (
     <View style={styles.container}>
-      <Text>{albums[0].title}</Text>
+      <Text>{posts[0].title}</Text>
     </View>
   )
 }
@@ -15,4 +15,4 @@ const styles = StyleSheet.create({
   },
 })
 
-export default Album
+export default PostsList
