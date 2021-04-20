@@ -1,16 +1,19 @@
 import React, { useContext, useState, useEffect } from 'react'
-import { View, Text } from 'react-native'
+import { ScrollView, StyleSheet } from 'react-native'
 import { UsersContext } from '../../context/usersContext'
 import UserInfos from './components/UserInfos'
 import TodoList from './components/TodoList'
 import Album from './components/Albums'
+import Loader from '../../components/Loader'
 
 const Dashboard = ({ route }) => {
   const {
     params: { userId },
   } = route
-  const { users, loading } = useContext(UsersContext)
+
   const [currentUser, setCurrentUser] = useState()
+
+  const { users } = useContext(UsersContext)
 
   useEffect(() => {
     setCurrentUser(users.find((user) => user.id === userId))
@@ -19,16 +22,22 @@ const Dashboard = ({ route }) => {
   return (
     <>
       {currentUser ? (
-        <View>
+        <ScrollView style={styles.container}>
           <UserInfos user={currentUser} />
           <TodoList user={currentUser} />
           <Album />
-        </View>
+        </ScrollView>
       ) : (
-        <Text>'bite'</Text>
+        <Loader />
       )}
     </>
   )
 }
+
+const styles = StyleSheet.create({
+  container: {
+    padding: 8,
+  },
+})
 
 export default Dashboard

@@ -1,58 +1,58 @@
-import React, { useEffect, useState } from 'react'
-import { Text, View, Switch, StyleSheet } from 'react-native'
+import React, { useState, useEffect } from 'react'
+import { Text, View, Switch, StyleSheet, FlatList } from 'react-native'
 import { useFetch } from '../../../hooks/fetch/useFetch'
+import Loader from '../../../components/Loader'
+import TodoListItem from './TodoListItem'
 
 const TodoList = ({ user }) => {
-  /*  const url = `https://jsonplaceholder.typicode.com${user.todos}`
-  const [result, loading] = useFetch(url)('GET')()
   const [todos, setTodos] = useState([])
+  const url = `https://jsonplaceholder.typicode.com${user.todos}`
+  const [result, loading] = useFetch(url)()
 
   useEffect(() => {
     setTodos(result)
   }, [result])
- */
-  const mockedTodos = [
-    {
-      id: 1,
-      title: 'Tg fdp ou',
-      complete: false,
-    },
-    {
-      id: 2,
-      title: 'Bonjour madame',
-      complete: true,
-    },
-  ]
-
-  const onToggle = () => {
-    const [result, loading] = useFetch(url)()
-  }
 
   return (
     <>
-      <View>
-        {mockedTodos.map(({ title, complete }) => (
-          <View style={styles.todo}>
-            <Text style={styles.text}>{title}</Text>
-            <Switch
-              trackColor={{ false: '#767577', true: '#81b0ff' }}
-              thumbColor={complete ? '#f5dd4b' : '#f4f3f4'}
-              onValueChange={onToggle}
-              value={complete}
-            />
-          </View>
-        ))}
-      </View>
+      {!loading ? (
+        <View style={styles.container}>
+          <Text style={styles.title}>Todo List</Text>
+          <FlatList
+            data={result}
+            renderItem={TodoListItem}
+            keyExtractor={(todo) => String(todo.id)}
+          />
+        </View>
+      ) : (
+        <Loader />
+      )}
     </>
   )
 }
 
 const styles = StyleSheet.create({
+  container: {
+    padding: 16,
+    backgroundColor: 'lavender',
+    borderRadius: 8,
+    marginTop: 16,
+  },
+  title: {
+    fontSize: 18,
+    textAlign: 'center',
+    marginBottom: 16,
+    fontWeight: '600',
+  },
   todo: {
     flexDirection: 'row',
+    marginBottom: 16,
   },
   text: {
-    color: 'red',
+    fontSize: 16,
+  },
+  switch: {
+    marginLeft: 'auto',
   },
 })
 
