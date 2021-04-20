@@ -24,4 +24,20 @@ const serializeUsers = (users) =>
     posts: `/posts?userId=${id}`,
   }))
 
-export { serializeUsers }
+const serializeAlbums = (albums) =>
+  albums.map((album) => ({
+    ...album,
+    photos: `/photos?albumId=${album.id}`,
+  }))
+
+// Slicing photos for now, and replacing actual links with picsum...
+const serializePhotos = (photos) =>
+  photos
+    .map((photo) => ({
+      ...photo,
+      url: 'https://picsum.photos/200',
+      thumbnailUrl: 'https://picsum.photos/200',
+    }))
+    .slice(0, Math.round(photos.length / 10))
+
+export { serializeUsers, serializeAlbums, serializePhotos }

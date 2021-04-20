@@ -9,6 +9,7 @@ import AlbumsList from './components/AlbumsList'
 import PostsList from './components/PostsList'
 import Loader from '../../components/Loader'
 import TodoModal from './components/TodalModal'
+import { serializeAlbums } from '../../lib/serialize'
 
 const Dashboard = ({ route }) => {
   const {
@@ -67,7 +68,7 @@ const Dashboard = ({ route }) => {
         const response = await fetch(albumsUrl)
         const data = await response.json()
 
-        setAlbums(data)
+        setAlbums(serializeAlbums(data))
       }
     })()
   }, [currentUser])
