@@ -12,7 +12,7 @@ const AlbumsListItem = ({ item }) => {
       const response = await fetch(albumsUrl)
       const data = await response.json()
 
-      setPhotos(serializePhotos(data))
+      setPhotos(await serializePhotos(data))
     })()
   }, [item])
 
