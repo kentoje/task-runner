@@ -33,10 +33,10 @@ const serializeAlbums = (albums) =>
 // Slicing photos for now, and replacing actual links with picsum...
 const serializePhotos = (photos) =>
   photos
-    .map((photo) => ({
+    .map((photo, index) => ({
       ...photo,
-      url: 'https://picsum.photos/200',
-      thumbnailUrl: 'https://picsum.photos/200',
+      url: `https://picsum.photos/id/${photo.id}/200`,
+      thumbnailUrl: `https://picsum.photos/id/${photo.id}/80`,
     }))
     .slice(0, Math.round(photos.length / 10))
 
