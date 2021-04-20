@@ -2,6 +2,7 @@ import React from 'react'
 import { StatusBar, SafeAreaView, StyleSheet } from 'react-native'
 import { NavigationContainer } from '@react-navigation/native'
 import Router from './src/router/Router'
+import 'react-native-get-random-values'
 
 const App = () => {
   return (

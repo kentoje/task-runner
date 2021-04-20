@@ -1,5 +1,6 @@
 import React from 'react'
 import { Modal, Text, Button, TextInput } from 'react-native'
+import { v4 as uuidv4 } from 'uuid'
 
 const TodalModal = ({
   modalVisible,
@@ -20,18 +21,18 @@ const TodalModal = ({
       <Text>Add a brand new Todo!</Text>
       <TextInput
         onChangeText={(event) => {
-          setNewTodo({
-            id: new Date().toISOString(),
-            userId: currentUser.id,
-            title: event,
-            completed: false,
-          })
+          setNewTodo({ title: event })
         }}
         value={newTodo.title}
       />
       <Button
         onPress={() => {
-          addTodo(newTodo)
+          addTodo({
+            ...newTodo,
+            id: uuidv4(),
+            completed: false,
+            userId: currentUser.id,
+          })
           setNewTodo({ title: '' })
           closeModal()
         }}
