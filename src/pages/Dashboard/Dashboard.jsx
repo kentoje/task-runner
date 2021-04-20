@@ -1,12 +1,5 @@
 import React, { useContext, useState, useEffect } from 'react'
-import {
-  ScrollView,
-  StyleSheet,
-  Modal,
-  Text,
-  Button,
-  TextInput,
-} from 'react-native'
+import { ScrollView, StyleSheet } from 'react-native'
 import { UsersContext } from '../../context/usersContext'
 import UserInfos from './components/UserInfos'
 import Map from '../../components/Map'
@@ -15,6 +8,7 @@ import TodoList from './components/TodoList'
 import AlbumsList from './components/AlbumsList'
 import PostsList from './components/PostsList'
 import Loader from '../../components/Loader'
+import TodoModal from './components/TodalModal'
 
 const Dashboard = ({ route }) => {
   const {
@@ -94,42 +88,14 @@ const Dashboard = ({ route }) => {
     <>
       {currentUser ? (
         <>
-          <Modal
-            animationType="slide"
-            visible={modalVisible}
-            onRequestClose={() => {
-              closeModal()
-            }}
-          >
-            <Text>Add a brand new Todo!</Text>
-            <TextInput
-              onChangeText={(event) => {
-                setNewTodo({
-                  id: new Date().toISOString(),
-                  userId: currentUser.id,
-                  title: event,
-                  completed: false,
-                })
-              }}
-              value={newTodo.title}
-            />
-            <Button
-              onPress={() => {
-                addTodo(newTodo)
-                setNewTodo({ title: '' })
-                closeModal()
-              }}
-              title="Submit"
-              color="coral"
-            />
-            <Button
-              onPress={() => {
-                closeModal()
-              }}
-              title="Cancel"
-              color="black"
-            />
-          </Modal>
+          <TodoModal
+            modalVisible={modalVisible}
+            closeModal={closeModal}
+            setNewTodo={setNewTodo}
+            currentUser={currentUser}
+            newTodo={newTodo}
+            addTodo={addTodo}
+          />
           <ScrollView style={styles.container}>
             <UserInfos user={currentUser} />
             <Map

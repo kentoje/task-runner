@@ -15,7 +15,7 @@ const TodoList = ({ todos, addTodo, toggleTodo, openModal }) => {
           onPress={() => {
             openModal()
           }}
-          title="Foo"
+          title="Add a todo!"
           color="#841584"
         />
         <FlatList
