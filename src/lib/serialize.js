@@ -31,21 +31,28 @@ const serializeAlbums = (albums) =>
   }))
 
 // Slicing photos for now, and replacing actual links with picsum...
-const serializePhotos = async (photos) =>
-  await Promise.all(
-    photos.slice(0, Math.round(photos.length / 10)).map(async (photo) => {
-      const res = await fetch(`https://picsum.photos/id/${photo.id}/200`)
-
-      return {
+const checkPhotosAvailability = (photos) =>
+  Promise.all(
+    photos.slice(0, Math.round(photos.length / 10)).map((photo) =>
+      fetch(`https://picsum.photos/id/${photo.id}/200`).then((res) => ({
         ...photo,
-        url: res.ok
-          ? `https://picsum.photos/id/${photo.id}/200`
-          : 'https://picsum.photos/200',
-        thumbnailUrl: res.ok
-          ? `https://picsum.photos/id/${photo.id}/80`
-          : `https://picsum.photos/80`,
-      }
-    })
+        isOk: res.ok,
+      }))
+    )
   )
+
+const serializePhotos = async (photos) => {
+  const availabilities = await checkPhotosAvailability(photos)
+
+  return availabilities.map((photo) => ({
+    ...photo,
+    url: photo.isOk
+      ? `https://picsum.photos/id/${photo.id}/200`
+      : 'https://picsum.photos/200',
+    thumbnailUrl: photo.isOk
+      ? `https://picsum.photos/id/${photo.id}/80`
+      : `https://picsum.photos/80`,
+  }))
+}
 
 export { serializeUsers, serializeAlbums, serializePhotos }

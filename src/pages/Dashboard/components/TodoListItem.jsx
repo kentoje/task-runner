@@ -5,7 +5,6 @@ const TodoListItem = ({ item: { id, title, completed }, callback }) => {
   return (
     <View style={styles.todo}>
       <Text style={styles.text}>{title}</Text>
-      <Text style={styles.text}>{id}</Text>
       <Switch
         onChange={() => {
           callback(id)

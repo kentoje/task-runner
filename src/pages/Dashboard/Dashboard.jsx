@@ -21,7 +21,6 @@ const Dashboard = ({ route }) => {
   const [albums, setAlbums] = useState([])
   const [posts, setPosts] = useState([])
   const [modalVisible, setModalVisible] = useState(false)
-  const [newTodo, setNewTodo] = useState({ title: '' })
 
   const { users } = useContext(UsersContext)
 
@@ -46,7 +45,7 @@ const Dashboard = ({ route }) => {
   }
 
   useEffect(() => {
-    setCurrentUser(users.find((user) => user.id === userId))
+    setCurrentUser(users?.find((user) => user.id === userId))
   }, [users, userId])
 
   useEffect(() => {
@@ -92,9 +91,7 @@ const Dashboard = ({ route }) => {
           <TodoModal
             modalVisible={modalVisible}
             closeModal={closeModal}
-            setNewTodo={setNewTodo}
             currentUser={currentUser}
-            newTodo={newTodo}
             addTodo={addTodo}
           />
           <ScrollView style={styles.container}>
