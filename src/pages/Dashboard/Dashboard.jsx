@@ -33,6 +33,7 @@ const Dashboard = ({ route }) => {
       }
     })()
   }, [currentUser])
+
   useEffect(() => {
     ;(async () => {
       if (currentUser) {
@@ -43,6 +44,7 @@ const Dashboard = ({ route }) => {
       }
     })()
   }, [currentUser])
+
   useEffect(() => {
     ;(async () => {
       if (currentUser) {

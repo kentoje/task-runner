@@ -3,7 +3,7 @@ const getMarkersFromUsers = (users) =>
     id: user.id,
     lat: user.geoCode.lat,
     lng: user.geoCode.lng,
-    title: user.fullName,
+    title: `${user.firstName} ${user.lastName}`,
   }))
 
 export { getMarkersFromUsers }

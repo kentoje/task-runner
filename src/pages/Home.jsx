@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { View, StyleSheet, TextInput } from 'react-native'
 import UsersList from '../components/Users/UsersList'
 import Loader from '../components/Loader'
