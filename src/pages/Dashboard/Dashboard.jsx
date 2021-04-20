@@ -6,7 +6,7 @@ import TodoList from './components/TodoList'
 import AlbumsList from './components/AlbumsList'
 import PostsList from './components/PostsList'
 import Loader from '../../components/Loader'
-import TodoModal from './components/TodalModal'
+import TodoModal from './components/TodoModal'
 import { serializeAlbums } from '../../lib/serialize'
 
 const Dashboard = ({ route }) => {
@@ -19,7 +19,6 @@ const Dashboard = ({ route }) => {
   const [albums, setAlbums] = useState([])
   const [posts, setPosts] = useState([])
   const [modalVisible, setModalVisible] = useState(false)
-  const [newTodo, setNewTodo] = useState({ title: '' })
 
   const { users } = useContext(UsersContext)
 
@@ -44,7 +43,7 @@ const Dashboard = ({ route }) => {
   }
 
   useEffect(() => {
-    setCurrentUser(users.find((user) => user.id === userId))
+    setCurrentUser(users?.find((user) => user.id === userId))
   }, [users, userId])
 
   useEffect(() => {
@@ -90,9 +89,7 @@ const Dashboard = ({ route }) => {
           <TodoModal
             modalVisible={modalVisible}
             closeModal={closeModal}
-            setNewTodo={setNewTodo}
             currentUser={currentUser}
-            newTodo={newTodo}
             addTodo={addTodo}
           />
           <ScrollView style={styles.container}>

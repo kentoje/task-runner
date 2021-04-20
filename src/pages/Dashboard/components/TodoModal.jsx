@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useState } from 'react'
+
 import {
   Modal,
   Text,
@@ -10,14 +11,9 @@ import {
 } from 'react-native'
 import { v4 as uuidv4 } from 'uuid'
 
-const TodalModal = ({
-  modalVisible,
-  closeModal,
-  setNewTodo,
-  currentUser,
-  newTodo,
-  addTodo,
-}) => {
+const TodalModal = ({ modalVisible, closeModal, currentUser, addTodo }) => {
+  const [inputValue, setInputValue] = useState('')
+
   return (
     <Modal
       animationType="slide"
@@ -31,9 +27,9 @@ const TodalModal = ({
         <Text style={styles.title}>What do you need to do ?</Text>
         <TextInput
           onChangeText={(event) => {
-            setNewTodo({ title: event })
+            setInputValue(event)
           }}
-          value={newTodo.title}
+          value={inputValue}
           style={styles.input}
           placeholder="Eat at korean restaurant"
         />
@@ -42,12 +38,12 @@ const TodalModal = ({
             <Button
               onPress={() => {
                 addTodo({
-                  ...newTodo,
                   id: uuidv4(),
+                  title: inputValue,
                   completed: false,
                   userId: currentUser.id,
                 })
-                setNewTodo({ title: '' })
+                setInputValue('')
                 closeModal()
               }}
               title="Submit"
