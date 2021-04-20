@@ -1,32 +1,18 @@
-import React, { useState, useEffect } from 'react'
-import { Text, View, Switch, StyleSheet, FlatList } from 'react-native'
-import { useFetch } from '../../../hooks/fetch/useFetch'
-import Loader from '../../../components/Loader'
+import React from 'react'
+import { Text, View, StyleSheet, FlatList } from 'react-native'
 import TodoListItem from './TodoListItem'
 
-const TodoList = ({ user }) => {
-  const [todos, setTodos] = useState([])
-  const url = `https://jsonplaceholder.typicode.com${user.todos}`
-  const [result, loading] = useFetch(url)()
-
-  useEffect(() => {
-    setTodos(result)
-  }, [result])
-
+const TodoList = ({ todos }) => {
   return (
     <>
-      {!loading ? (
-        <View style={styles.container}>
-          <Text style={styles.title}>Todo List</Text>
-          <FlatList
-            data={result}
-            renderItem={TodoListItem}
-            keyExtractor={(todo) => String(todo.id)}
-          />
-        </View>
-      ) : (
-        <Loader />
-      )}
+      <View style={styles.container}>
+        <Text style={styles.title}>Todo List</Text>
+        <FlatList
+          data={todos}
+          renderItem={TodoListItem}
+          keyExtractor={(todo) => String(todo.id)}
+        />
+      </View>
     </>
   )
 }

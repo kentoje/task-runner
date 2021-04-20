@@ -1,12 +1,12 @@
 import React from 'react'
 import { Text, View } from 'react-native'
 
-const Album = ({ albums }) => {
+const Posts = ({ posts }) => {
   return (
     <View>
-      <Text>{albums[0].title}</Text>
+      <Text>{posts[0].title}</Text>
     </View>
   )
 }
 
-export default Album
+export default Posts
