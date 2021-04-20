@@ -8,7 +8,7 @@ import TodoList from './components/TodoList'
 import AlbumsList from './components/AlbumsList'
 import PostsList from './components/PostsList'
 import Loader from '../../components/Loader'
-import TodoModal from './components/TodalModal'
+import TodoModal from './components/TodoModal'
 import { serializeAlbums } from '../../lib/serialize'
 
 const Dashboard = ({ route }) => {
