@@ -9,17 +9,28 @@ const TodoList = ({ todos, addTodo, toggleTodo, openModal }) => {
     <>
       <View style={styles.container}>
         <View style={styles.header}>
-          <View />
           <Text style={styles.title}>Todo List</Text>
-          <TouchableHighlight
+          {/* <TouchableHighlight
             onPress={() => {
               openModal()
             }}
             underlayColor={'#E9E9E944'}
           >
-            <Text style={styles.button}>+</Text>
-          </TouchableHighlight>
+            <View style={styles.buttonWrapper}>
+              <Text style={styles.button}>+</Text>
+            </View>
+          </TouchableHighlight> */}
         </View>
+        <TouchableHighlight
+          onPress={() => {
+            openModal()
+          }}
+          underlayColor={'#E9E9E944'}
+        >
+          <View style={styles.buttonWrapper}>
+            <Text style={styles.button}>+</Text>
+          </View>
+        </TouchableHighlight>
         <FlatList data={todos} renderItem={renderItem} keyExtractor={(todo) => String(todo.id)} />
       </View>
     </>
@@ -29,7 +40,7 @@ const TodoList = ({ todos, addTodo, toggleTodo, openModal }) => {
 const styles = StyleSheet.create({
   container: {
     padding: 16,
-    backgroundColor: 'lavender',
+    backgroundColor: '#F9F9F9',
     borderRadius: 8,
     marginTop: 16,
   },
@@ -40,16 +51,24 @@ const styles = StyleSheet.create({
     marginBottom: 24,
   },
   title: {
-    fontSize: 18,
-    textAlign: 'center',
-    fontWeight: '600',
+    fontSize: 20,
+    fontWeight: 'bold',
   },
   todo: {
     flexDirection: 'row',
     marginBottom: 16,
   },
+  buttonWrapper: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderWidth: 1.5,
+    borderRadius: 4,
+    borderColor: '#007BC3',
+    marginBottom: 8,
+  },
   button: {
-    fontSize: 30,
+    fontSize: 24,
+    color: '#007BC3',
   },
   text: {
     fontSize: 16,

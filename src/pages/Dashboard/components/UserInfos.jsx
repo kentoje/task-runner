@@ -13,11 +13,7 @@ const UserInfos = ({ user }) => {
       <Text style={styles.item}>{user.companyName}</Text>
       <Text style={styles.item}>{user.email}</Text>
       <Text style={[styles.item, styles.phone]}>{user.phone}</Text>
-      <Map
-        style={styles.map}
-        data={getMarkersFromUsers([user])}
-        navigate={() => {}}
-      />
+      <Map style={styles.map} data={getMarkersFromUsers([user])} navigate={() => {}} />
     </View>
   )
 }
@@ -25,14 +21,13 @@ const UserInfos = ({ user }) => {
 const styles = StyleSheet.create({
   container: {
     padding: 16,
-    backgroundColor: 'lavender',
+    backgroundColor: '#F9F9F9',
     borderRadius: 8,
   },
   title: {
-    fontSize: 18,
-    textAlign: 'center',
+    fontSize: 20,
+    fontWeight: 'bold',
     marginBottom: 16,
-    fontWeight: '600',
   },
   item: {
     fontSize: 16,

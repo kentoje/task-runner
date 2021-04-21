@@ -20,7 +20,10 @@ const PhotosList = ({ photos }) => {
 
 const styles = StyleSheet.create({
   container: {
-    marginBottom: 24,
+    padding: 8,
+    borderRadius: 4,
+    borderWidth: 1.5,
+    borderColor: '#E9E9E9',
   },
 })
 

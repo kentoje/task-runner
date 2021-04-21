@@ -17,15 +17,23 @@ const PostsList = ({ posts, navigate }) => {
 
   return (
     <View style={styles.container}>
-      <Text>Posts</Text>
+      <Text style={styles.title}>Posts</Text>
       <FlatList data={posts} renderItem={renderItem} keyExtractor={(post) => String(post.id)} />
     </View>
   )
 }
 
 const styles = StyleSheet.create({
+  title: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    marginBottom: 24,
+  },
   container: {
-    padding: 8,
+    marginTop: 16,
+    padding: 16,
+    borderRadius: 4,
+    backgroundColor: '#F9F9F9',
   },
 })
 

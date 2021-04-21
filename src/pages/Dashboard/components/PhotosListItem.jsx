@@ -12,7 +12,7 @@ const PhotosListItem = ({ item }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    marginRight: 15,
+    marginRight: 16,
   },
   image: {
     width: 50,

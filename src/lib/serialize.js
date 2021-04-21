@@ -37,7 +37,7 @@ const serializeAlbums = (albums) =>
 const checkPhotosAvailability = (photos) =>
   Promise.all(
     photos.slice(0, Math.round(photos.length / 10)).map((photo) =>
-      fetch(`https://picsum.photos/id/${photo.id}/200`).then((res) => ({
+      fetch(`https://picsum.photos/id/${photo.id}/500`).then((res) => ({
         ...photo,
         isOk: res.ok,
       }))
@@ -50,7 +50,7 @@ const serializePhotos = async (photos) => {
   return Promise.all(
     availabilities.map(async (photo) => {
       if (photo.isOk) {
-        const urlRes = await fetch(`https://picsum.photos/id/${photo.id}/200`)
+        const urlRes = await fetch(`https://picsum.photos/id/${photo.id}/500`)
         const thumbnailUrl = await fetch(`https://picsum.photos/id/${photo.id}/80`)
 
         return {
@@ -60,7 +60,7 @@ const serializePhotos = async (photos) => {
         }
       }
 
-      const urlRes = await fetch('https://picsum.photos/200')
+      const urlRes = await fetch('https://picsum.photos/500')
 
       return {
         ...photo,

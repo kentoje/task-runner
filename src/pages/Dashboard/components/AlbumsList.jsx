@@ -4,9 +4,7 @@ import { FlatList } from 'react-native-gesture-handler'
 import AlbumsListItem from './AlbumsListItem'
 
 const AlbumsList = ({ albums, navigate }) => {
-  const renderItem = ({ item }) => (
-    <AlbumsListItem item={item} navigate={navigate} />
-  )
+  const renderItem = ({ item }) => <AlbumsListItem item={item} navigate={navigate} />
 
   return (
     <View style={styles.container}>
@@ -19,14 +17,13 @@ const AlbumsList = ({ albums, navigate }) => {
 const styles = StyleSheet.create({
   container: {
     padding: 16,
-    backgroundColor: 'lavender',
+    backgroundColor: '#F9F9F9',
     borderRadius: 8,
     marginTop: 16,
   },
   title: {
-    fontSize: 18,
-    textAlign: 'center',
-    fontWeight: '600',
+    fontSize: 20,
+    fontWeight: 'bold',
     marginBottom: 24,
   },
 })

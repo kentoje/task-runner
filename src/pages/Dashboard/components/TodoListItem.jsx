@@ -1,10 +1,11 @@
 import React from 'react'
 import { Text, View, Switch, StyleSheet } from 'react-native'
+import { capitalize } from '../../../lib/string'
 
 const TodoListItem = ({ item: { id, title, completed }, callback }) => {
   return (
     <View style={styles.todo}>
-      <Text style={styles.text}>{title}</Text>
+      <Text style={styles.text}>{capitalize(title)}</Text>
       <Switch
         onChange={() => {
           callback(id)
@@ -20,7 +21,12 @@ const styles = StyleSheet.create({
   todo: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginBottom: 16,
+    marginBottom: 8,
+    paddingVertical: 8,
+    paddingHorizontal: 16,
+    borderRadius: 4,
+    borderWidth: 1.5,
+    borderColor: '#E9E9E9',
   },
   text: {
     fontSize: 16,
