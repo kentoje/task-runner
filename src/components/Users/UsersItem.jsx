@@ -1,11 +1,10 @@
 import React from 'react'
 import { View, Text, StyleSheet } from 'react-native'
-import { getRandomColor } from '../../lib/colors'
 
 const UsersItem = ({ user }) => {
   const { firstName, lastName } = user
   const initals = `${firstName.charAt(0)} ${lastName.charAt(0)}`
-  const backgroundColor = getRandomColor()
+  const backgroundColor = user.color
 
   return (
     <View style={styles.container}>
