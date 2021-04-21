@@ -1,6 +1,7 @@
 import React from 'react'
 import Home from '../pages/Home'
 import Dashboard from '../pages/Dashboard/Dashboard'
+import Post from '../pages/Post/Post'
 import { createStackNavigator } from '@react-navigation/stack'
 import { UsersProvider } from '../context/usersContext'
 
@@ -16,6 +17,11 @@ const routes = [
     id: 2,
     name: 'Dashboard',
     component: Dashboard,
+  },
+  {
+    id: 3,
+    name: 'Post',
+    component: Post,
   },
 ]
 

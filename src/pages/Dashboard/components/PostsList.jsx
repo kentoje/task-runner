@@ -1,10 +1,18 @@
 import React from 'react'
 import { Text, View, StyleSheet } from 'react-native'
-import { FlatList } from 'react-native-gesture-handler'
+import { FlatList, TouchableHighlight } from 'react-native-gesture-handler'
 import PostsListItem from './PostsListItem'
 
-const PostsList = ({ posts }) => {
-  const renderItem = ({ item }) => <PostsListItem item={item} />
+const PostsList = ({ posts, navigate }) => {
+  const renderItem = ({ item }) => (
+    <TouchableHighlight
+      onPress={() => {
+        navigate(item.id)
+      }}
+    >
+      <PostsListItem item={item} />
+    </TouchableHighlight>
+  )
 
   return (
     <View style={styles.container}>

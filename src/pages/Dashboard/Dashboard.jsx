@@ -9,7 +9,7 @@ import Loader from '../../components/Loader'
 import TodoModal from './components/TodoModal'
 import { serializeAlbums } from '../../lib/serialize'
 
-const Dashboard = ({ route }) => {
+const Dashboard = ({ route, navigation }) => {
   const {
     params: { userId },
   } = route
@@ -40,6 +40,10 @@ const Dashboard = ({ route }) => {
 
   const closeModal = () => {
     setModalVisible(false)
+  }
+
+  const navigate = (id) => {
+    navigation.navigate('Post', { postId: id })
   }
 
   useEffect(() => {
@@ -103,7 +107,9 @@ const Dashboard = ({ route }) => {
               />
             ) : null}
             {albums.length ? <AlbumsList albums={albums} /> : null}
-            {posts.length ? <PostsList posts={posts} /> : null}
+            {posts.length ? (
+              <PostsList posts={posts} navigate={navigate} />
+            ) : null}
           </ScrollView>
         </>
       ) : (
