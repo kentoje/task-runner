@@ -20,6 +20,9 @@ const Dashboard = ({ route, navigation }) => {
   const [posts, setPosts] = useState([])
   const [modalVisible, setModalVisible] = useState(false)
 
+  const navigate = (page, params = {}) => {
+    navigation.navigate(page, params)
+  }
   const { users } = useContext(UsersContext)
 
   const addTodo = (todo) => {
@@ -36,10 +39,6 @@ const Dashboard = ({ route, navigation }) => {
 
   const closeModal = () => {
     setModalVisible(false)
-  }
-
-  const navigate = (post) => {
-    navigation.navigate('Post', { post })
   }
 
   useEffect(() => {
@@ -102,7 +101,7 @@ const Dashboard = ({ route, navigation }) => {
                 openModal={openModal}
               />
             ) : null}
-            {albums.length ? <AlbumsList albums={albums} /> : null}
+            {albums.length ? <AlbumsList albums={albums} navigate={navigate} /> : null}
             {posts.length ? <PostsList posts={posts} navigate={navigate} /> : null}
           </ScrollView>
         </>

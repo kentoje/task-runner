@@ -42,6 +42,7 @@ const TodalModal = ({ modalVisible, closeModal, currentUser, addTodo }) => {
               ...styles.button,
               backgroundColor: submitBackgroundColor,
             }}
+            underlayColor={'#E9E9E944'}
           >
             <Button
               onPress={() => {
@@ -65,6 +66,7 @@ const TodalModal = ({ modalVisible, closeModal, currentUser, addTodo }) => {
               ...styles.cancel,
               backgroundColor: cancelBackgroundColor,
             }}
+            underlayColor={'#E9E9E944'}
           >
             <Button
               onPress={() => {

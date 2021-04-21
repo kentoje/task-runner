@@ -4,6 +4,7 @@ import Dashboard from '../pages/Dashboard/Dashboard'
 import Post from '../pages/Post/Post'
 import { createStackNavigator } from '@react-navigation/stack'
 import { UsersProvider } from '../context/usersContext'
+import Album from '../pages/Album'
 
 const Stack = createStackNavigator()
 
@@ -22,6 +23,11 @@ const routes = [
     id: 3,
     name: 'Post',
     component: Post,
+  },
+  {
+    id: 4,
+    name: 'Album',
+    component: Album,
   },
 ]
 

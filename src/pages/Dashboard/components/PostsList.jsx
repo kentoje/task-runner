@@ -7,8 +7,9 @@ const PostsList = ({ posts, navigate }) => {
   const renderItem = ({ item }) => (
     <TouchableHighlight
       onPress={() => {
-        navigate(item)
+        navigate('Post', { post: item })
       }}
+      underlayColor={'#E9E9E944'}
     >
       <PostsListItem item={item} />
     </TouchableHighlight>

@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react'
-import { Text, View, StyleSheet } from 'react-native'
+import { Text, View, StyleSheet, TouchableHighlight } from 'react-native'
 import PhotosList from './PhotosList'
 import { serializePhotos } from '../../../lib/serialize'
 
-const AlbumsListItem = ({ item }) => {
+const AlbumsListItem = ({ item, navigate }) => {
   const [photos, setPhotos] = useState([])
 
   useEffect(() => {
@@ -17,10 +17,12 @@ const AlbumsListItem = ({ item }) => {
   }, [item])
 
   return (
-    <View>
-      <Text style={styles.title}>{item.title}</Text>
-      {photos.length ? <PhotosList photos={photos} /> : null}
-    </View>
+    <TouchableHighlight onPress={() => navigate('Album', { photos })}>
+      <View>
+        <Text style={styles.title}>{item.title}</Text>
+        {photos.length ? <PhotosList photos={photos} /> : null}
+      </View>
+    </TouchableHighlight>
   )
 }
 

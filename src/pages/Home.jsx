@@ -27,7 +27,6 @@ const Home = ({ navigation }) => {
     <>
       {!loading ? (
         <ScrollView>
-          <Text style={styles.title}>Users</Text>
           <View style={styles.container}>
             <TextInput
               onChangeText={(event) => {
@@ -50,19 +49,16 @@ const Home = ({ navigation }) => {
 const styles = StyleSheet.create({
   container: {
     padding: 8,
-  },
-  title: {
-    fontSize: 20,
-    textAlign: 'center',
-    marginTop: 16,
-    marginBottom: 8,
+    backgroundColor: '#E9E9E9',
   },
   input: {
-    borderRadius: 16,
+    borderRadius: 4,
     fontSize: 16,
-    borderColor: 'darkgrey',
-    borderWidth: 2,
-    padding: 8,
+    borderColor: '#DFDFDF',
+    backgroundColor: '#F9F9F9',
+    borderWidth: 1.5,
+    paddingVertical: 8,
+    paddingHorizontal: 16,
     marginBottom: 16,
   },
 })
