@@ -6,12 +6,21 @@ const Map = ({ data, navigate }) => {
   const [focus, setFocus] = useState({ lat: 0, lng: 0 })
 
   useEffect(() => {
-    if (data.length) {
-      const [firstMarker] = data
-      const random = Math.round(Math.random() * (data.length - 1))
+    const [firstMarker] = data
+    const random = Math.round(Math.random() * (data.length - 1))
+    const centerOfEarthCoordinates = { lat: 40.52, lng: 34.34 }
 
-      data.length === 1 ? setFocus(firstMarker) : setFocus(data[random])
+    if (!data.length) {
+      setFocus(centerOfEarthCoordinates)
+      return
     }
+
+    if (data.length === 1) {
+      setFocus(firstMarker)
+      return
+    }
+
+    setFocus(data[random])
   }, [data])
 
   return (

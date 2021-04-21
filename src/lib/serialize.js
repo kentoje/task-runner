@@ -47,15 +47,28 @@ const checkPhotosAvailability = (photos) =>
 const serializePhotos = async (photos) => {
   const availabilities = await checkPhotosAvailability(photos)
 
-  return availabilities.map((photo) => ({
-    ...photo,
-    url: photo.isOk
-      ? `https://picsum.photos/id/${photo.id}/200`
-      : 'https://picsum.photos/200',
-    thumbnailUrl: photo.isOk
-      ? `https://picsum.photos/id/${photo.id}/80`
-      : `https://picsum.photos/80`,
-  }))
+  return Promise.all(
+    availabilities.map(async (photo) => {
+      if (photo.isOk) {
+        const urlRes = await fetch(`https://picsum.photos/id/${photo.id}/200`)
+        const thumbnailUrl = await fetch(`https://picsum.photos/id/${photo.id}/80`)
+
+        return {
+          ...photo,
+          url: urlRes.url,
+          thumbnailUrl: thumbnailUrl.url,
+        }
+      }
+
+      const urlRes = await fetch('https://picsum.photos/200')
+
+      return {
+        ...photo,
+        url: urlRes.url,
+        thumbnailUrl: urlRes.url,
+      }
+    })
+  )
 }
 
 export { serializeUsers, serializeAlbums, serializePhotos }

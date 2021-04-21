@@ -1,5 +1,5 @@
 import React from 'react'
-import { FlatList, View } from 'react-native'
+import { FlatList, View, Text } from 'react-native'
 import { TouchableHighlight } from 'react-native-gesture-handler'
 import UsersItem from './UsersItem'
 
@@ -12,11 +12,15 @@ const UsersList = ({ users, navigate }) => {
 
   return (
     <View>
-      <FlatList
-        data={users}
-        renderItem={renderItem}
-        keyExtractor={(user) => String(user.id)}
-      />
+      {users.length ? (
+        <FlatList
+          data={users}
+          renderItem={renderItem}
+          keyExtractor={(user) => String(user.id)}
+        />
+      ) : (
+        <Text>No user found...</Text>
+      )}
     </View>
   )
 }

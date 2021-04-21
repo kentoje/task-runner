@@ -4,9 +4,7 @@ import { ENUM_TYPES } from './constants'
 const initialState = []
 
 const filterByFullName = (data, filter) =>
-  data.filter((item) =>
-    item.firstName.toLowerCase().includes(filter.toLowerCase())
-  )
+  data.filter((item) => item.firstName.toLowerCase().includes(filter.toLowerCase()))
 
 const reducer = (state = [], action) => {
   if (action.type === ENUM_TYPES.filter) {
