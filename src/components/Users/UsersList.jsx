@@ -4,9 +4,9 @@ import { TouchableHighlight } from 'react-native-gesture-handler'
 import UsersItem from './UsersItem'
 
 const UsersList = ({ users, navigate }) => {
-  const renderItem = ({ item: { firstName, lastName, id } }) => (
-    <TouchableHighlight onPress={() => navigate(id)}>
-      <UsersItem firstName={firstName} lastName={lastName} />
+  const renderItem = ({ item }) => (
+    <TouchableHighlight onPress={() => navigate(item.id)}>
+      <UsersItem user={item} />
     </TouchableHighlight>
   )
 

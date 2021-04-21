@@ -1,11 +1,11 @@
 import React from 'react'
 import { View, Text, StyleSheet } from 'react-native'
-import { getRandomColor, colorsArray } from '../../lib/colors'
+import { getRandomColor } from '../../lib/colors'
 
-const UsersItem = ({ firstName, lastName }) => {
+const UsersItem = ({ user }) => {
+  const { firstName, lastName } = user
   const initals = `${firstName.charAt(0)} ${lastName.charAt(0)}`
-  const backgroundColor = getRandomColor(colorsArray)()
-  const color = getRandomColor(colorsArray)(backgroundColor)
+  const backgroundColor = getRandomColor()
 
   return (
     <View style={styles.container}>
@@ -15,7 +15,7 @@ const UsersItem = ({ firstName, lastName }) => {
           backgroundColor,
         }}
       >
-        <Text style={{ color }}>{initals}</Text>
+        <Text style={styles.initials}>{initals}</Text>
       </View>
       <Text style={styles.name}>
         {firstName} {lastName}
@@ -38,6 +38,9 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 25,
+  },
+  initials: {
+    color: 'white',
   },
   name: {
     marginLeft: 16,

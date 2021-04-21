@@ -1,3 +1,5 @@
+import { getRandomColor } from './colors'
+
 const fullName = (name) => {
   const [firstName, lastName] = name.split(' ')
 
@@ -22,6 +24,7 @@ const serializeUsers = (users) =>
     todos: `/todos?userId=${id}`,
     albums: `/albums?userId=${id}`,
     posts: `/posts?userId=${id}`,
+    color: getRandomColor(),
   }))
 
 const serializeAlbums = (albums) =>
