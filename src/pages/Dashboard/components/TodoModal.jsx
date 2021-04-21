@@ -8,11 +8,14 @@ import {
   StyleSheet,
   View,
   TouchableHighlight,
+  Platform,
 } from 'react-native'
 import { v4 as uuidv4 } from 'uuid'
 
 const TodalModal = ({ modalVisible, closeModal, currentUser, addTodo }) => {
   const [inputValue, setInputValue] = useState('')
+  const cancelBackgroundColor = Platform.OS === 'android' ? 'transparent' : '#F3514E'
+  const submitBackgroundColor = Platform.OS === 'android' ? 'transparent' : '#3AB557'
 
   return (
     <Modal
@@ -24,7 +27,7 @@ const TodalModal = ({ modalVisible, closeModal, currentUser, addTodo }) => {
       }}
     >
       <View style={styles.container}>
-        <Text style={styles.title}>What do you need to do ?</Text>
+        <Text style={styles.title}>What do you need to do?</Text>
         <TextInput
           onChangeText={(event) => {
             setInputValue(event)
@@ -34,7 +37,12 @@ const TodalModal = ({ modalVisible, closeModal, currentUser, addTodo }) => {
           placeholder="Eat at korean restaurant"
         />
         <View style={styles.buttons}>
-          <TouchableHighlight style={styles.button}>
+          <TouchableHighlight
+            style={{
+              ...styles.button,
+              backgroundColor: submitBackgroundColor,
+            }}
+          >
             <Button
               onPress={() => {
                 addTodo({
@@ -47,16 +55,22 @@ const TodalModal = ({ modalVisible, closeModal, currentUser, addTodo }) => {
                 closeModal()
               }}
               title="Submit"
-              color="#fff"
+              color={Platform.OS === 'ios' ? '#fff' : '#3AB557'}
             />
           </TouchableHighlight>
-          <TouchableHighlight style={[styles.button, styles.cancel]}>
+          <TouchableHighlight
+            style={{
+              ...styles.button,
+              ...styles.cancel,
+              backgroundColor: cancelBackgroundColor,
+            }}
+          >
             <Button
               onPress={() => {
                 closeModal()
               }}
               title="Cancel"
-              color="#fff"
+              color={Platform.OS === 'ios' ? '#fff' : '#F3514E'}
             />
           </TouchableHighlight>
         </View>
@@ -90,11 +104,9 @@ const styles = StyleSheet.create({
   button: {
     padding: 8,
     fontSize: 16,
-    backgroundColor: '#3AB557',
   },
   cancel: {
     marginLeft: 24,
-    backgroundColor: '#F3514E',
   },
 })
 export default TodalModal
