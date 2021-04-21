@@ -27,11 +27,7 @@ const Dashboard = ({ route, navigation }) => {
   }
 
   const toggleTodo = (id) => {
-    setTodos(
-      todos.map((todo) =>
-        todo.id === id ? { ...todo, completed: !todo.completed } : todo
-      )
-    )
+    setTodos(todos.map((todo) => (todo.id === id ? { ...todo, completed: !todo.completed } : todo)))
   }
 
   const openModal = () => {
@@ -107,9 +103,7 @@ const Dashboard = ({ route, navigation }) => {
               />
             ) : null}
             {albums.length ? <AlbumsList albums={albums} /> : null}
-            {posts.length ? (
-              <PostsList posts={posts} navigate={navigate} />
-            ) : null}
+            {posts.length ? <PostsList posts={posts} navigate={navigate} /> : null}
           </ScrollView>
         </>
       ) : (

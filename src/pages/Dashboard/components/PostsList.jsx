@@ -17,11 +17,7 @@ const PostsList = ({ posts, navigate }) => {
   return (
     <View style={styles.container}>
       <Text>Posts</Text>
-      <FlatList
-        data={posts}
-        renderItem={renderItem}
-        keyExtractor={(post) => String(post.id)}
-      />
+      <FlatList data={posts} renderItem={renderItem} keyExtractor={(post) => String(post.id)} />
     </View>
   )
 }

@@ -56,6 +56,7 @@ const TodalModal = ({ modalVisible, closeModal, currentUser, addTodo }) => {
               }}
               title="Submit"
               color={Platform.OS === 'ios' ? '#fff' : '#3AB557'}
+              disabled={!inputValue?.length}
             />
           </TouchableHighlight>
           <TouchableHighlight
