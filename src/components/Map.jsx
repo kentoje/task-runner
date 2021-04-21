@@ -30,8 +30,8 @@ const Map = ({ data, navigate }) => {
       region={{
         latitude: focus.lat,
         longitude: focus.lng,
-        latitudeDelta: 30,
-        longitudeDelta: 30,
+        latitudeDelta: 35,
+        longitudeDelta: 35,
       }}
     >
       {data.map((marker) => (

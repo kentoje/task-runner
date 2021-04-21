@@ -34,12 +34,12 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     paddingVertical: 8,
-    paddingHorizontal: 16,
     marginBottom: 32,
     backgroundColor: '#F9F9F9',
     borderRadius: 4,
   },
   title: {
+    paddingHorizontal: 16,
     fontSize: 20,
     fontWeight: 'bold',
     paddingTop: 8,
@@ -48,6 +48,7 @@ const styles = StyleSheet.create({
   },
   row: {
     height: 1.5,
+    marginHorizontal: 16,
     backgroundColor: '#E9E9E9',
   },
 })
