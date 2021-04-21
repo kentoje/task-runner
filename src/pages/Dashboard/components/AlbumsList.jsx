@@ -1,5 +1,5 @@
 import React from 'react'
-import { Text, View, StyleSheet, TouchableHighlight } from 'react-native'
+import { Text, View, StyleSheet } from 'react-native'
 import { FlatList } from 'react-native-gesture-handler'
 import AlbumsListItem from './AlbumsListItem'
 

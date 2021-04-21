@@ -21,14 +21,13 @@ const CommentsList = ({ comments }) => {
 const styles = StyleSheet.create({
   container: {
     padding: 16,
-    backgroundColor: 'lavender',
     borderRadius: 8,
+    backgroundColor: '#F9F9F9',
     marginTop: 16,
   },
   title: {
-    fontSize: 18,
-    textAlign: 'center',
-    fontWeight: '600',
+    fontSize: 20,
+    fontWeight: 'bold',
     marginBottom: 24,
   },
 })

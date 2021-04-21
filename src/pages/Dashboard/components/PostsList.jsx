@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
   container: {
     marginTop: 16,
     padding: 16,
-    borderRadius: 4,
+    borderRadius: 8,
     backgroundColor: '#F9F9F9',
   },
 })
