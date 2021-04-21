@@ -42,8 +42,8 @@ const Dashboard = ({ route, navigation }) => {
     setModalVisible(false)
   }
 
-  const navigate = (id) => {
-    navigation.navigate('Post', { postId: id })
+  const navigate = (post) => {
+    navigation.navigate('Post', { post })
   }
 
   useEffect(() => {

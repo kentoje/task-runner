@@ -7,7 +7,7 @@ const PostsList = ({ posts, navigate }) => {
   const renderItem = ({ item }) => (
     <TouchableHighlight
       onPress={() => {
-        navigate(item.id)
+        navigate(item)
       }}
     >
       <PostsListItem item={item} />
