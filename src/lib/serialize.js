@@ -36,10 +36,11 @@ const serializeAlbums = (albums) =>
 // Slicing photos for now, and replacing actual links with picsum...
 const checkPhotosAvailability = (photos) =>
   Promise.all(
-    photos.slice(0, Math.round(photos.length / 10)).map((photo) =>
+    photos.slice(0, Math.round(photos.length / 10)).map((photo, index) =>
       fetch(`https://picsum.photos/id/${photo.id}/500`).then((res) => ({
         ...photo,
         isOk: res.ok,
+        count: ++index,
       }))
     )
   )

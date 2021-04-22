@@ -1,15 +1,29 @@
 import React from 'react'
-import { View, StyleSheet } from 'react-native'
+import { View, StyleSheet, Text } from 'react-native'
 import { FlatList } from 'react-native-gesture-handler'
 import PhotosListItem from './PhotosListItem'
 
 const PhotosList = ({ photos }) => {
-  const renderItem = ({ item }) => <PhotosListItem item={item} />
+  const previews = photos.slice(0, -2)
+  const [{ count }] = photos.slice(-1)
+  const photosLeft = count - previews.length
+
+  const renderItem = ({ item }) =>
+    item.count !== previews.length ? (
+      <PhotosListItem item={item} />
+    ) : (
+      <>
+        <PhotosListItem item={item} />
+        <View style={styles.countWrapper}>
+          <Text style={styles.itemLeft}>+{photosLeft}</Text>
+        </View>
+      </>
+    )
 
   return (
     <View style={styles.container}>
       <FlatList
-        data={photos}
+        data={previews}
         horizontal
         renderItem={renderItem}
         keyExtractor={(photo) => String(photo.id)}
@@ -24,6 +38,20 @@ const styles = StyleSheet.create({
     borderRadius: 4,
     borderWidth: 1.5,
     borderColor: '#E9E9E9',
+  },
+  countWrapper: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: 8,
+    borderRadius: 4,
+    borderWidth: 1.5,
+    borderColor: '#E9E9E9',
+    width: 50,
+    height: 50,
+  },
+  itemLeft: {
+    fontWeight: 'bold',
+    fontSize: 16,
   },
 })
 
