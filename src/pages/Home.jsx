@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { StyleSheet, TextInput, View } from 'react-native'
 import UsersList from '../components/Users/UsersList'
 import Loader from '../components/Loader'
@@ -11,6 +11,7 @@ import { useFilter } from '../hooks/filter/useFilter'
 const Home = ({ navigation }) => {
   const { users, loading } = useContext(UsersContext)
   const [state, filter] = useFilter()
+  const [focusFilter, setFocusFilter] = useState(false)
 
   const navigate = (id) => {
     navigation.navigate('Dashboard', { userId: id })
@@ -33,6 +34,12 @@ const Home = ({ navigation }) => {
                 onChangeText={(event) => {
                   filter(users, event)
                 }}
+                onFocus={() => {
+                  setFocusFilter(true)
+                }}
+                onBlur={() => {
+                  setFocusFilter(false)
+                }}
                 placeholder="Search for a user"
                 style={styles.input}
               />
@@ -41,9 +48,11 @@ const Home = ({ navigation }) => {
               <UsersList users={state} navigate={navigate} />
             </View>
           </View>
-          <View style={styles.mapWrapper}>
-            <Map data={getMarkersFromUsers(state)} navigate={navigate} />
-          </View>
+          {!focusFilter ? (
+            <View style={styles.mapWrapper}>
+              <Map data={getMarkersFromUsers(state)} navigate={navigate} />
+            </View>
+          ) : null}
         </View>
       ) : (
         <Loader />

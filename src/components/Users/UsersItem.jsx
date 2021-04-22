@@ -4,7 +4,7 @@ import AppText from '../../components/AppText'
 
 const UsersItem = ({ user }) => {
   const { firstName, lastName } = user
-  const initals = `${firstName.charAt(0)} ${lastName.charAt(0)}`
+  const initals = `${firstName.charAt(0)}${lastName.charAt(0)}`
   const backgroundColor = user.color
 
   return (

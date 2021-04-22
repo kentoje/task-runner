@@ -25,7 +25,7 @@ const UsersList = ({ users, navigate }) => {
       {users.length ? (
         <FlatList data={users} renderItem={renderItem} keyExtractor={(user) => String(user.id)} />
       ) : (
-        <AppText>No user found...</AppText>
+        <AppText style={styles.noUser}>No user found...</AppText>
       )}
     </View>
   )
@@ -51,6 +51,9 @@ const styles = StyleSheet.create({
     height: 1.5,
     marginHorizontal: 16,
     backgroundColor: '#E9E9E9',
+  },
+  noUser: {
+    marginLeft: 16,
   },
 })
 

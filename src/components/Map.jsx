@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { StyleSheet, Dimensions } from 'react-native'
 import MapView, { PROVIDER_GOOGLE, Marker } from 'react-native-maps'
 
-const Map = ({ data, navigate }) => {
+const Map = ({ data, navigate, latitudeDelta, longitudeDelta }) => {
   const [focus, setFocus] = useState({ lat: 0, lng: 0 })
 
   useEffect(() => {
@@ -30,8 +30,8 @@ const Map = ({ data, navigate }) => {
       region={{
         latitude: focus.lat,
         longitude: focus.lng,
-        latitudeDelta: 35,
-        longitudeDelta: 35,
+        latitudeDelta: latitudeDelta || 35,
+        longitudeDelta: longitudeDelta || 35,
       }}
     >
       {data.map((marker) => (
