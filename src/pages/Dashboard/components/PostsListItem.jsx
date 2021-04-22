@@ -1,11 +1,12 @@
 import React from 'react'
-import { Text, View, StyleSheet } from 'react-native'
+import { View, StyleSheet } from 'react-native'
+import AppText from '../../../components/AppText'
 import { capitalize } from '../../../lib/string'
 
 const PostsListItem = ({ item }) => {
   return (
     <View style={styles.container}>
-      <Text>{capitalize(item.title)}</Text>
+      <AppText>{capitalize(item.title)}</AppText>
     </View>
   )
 }

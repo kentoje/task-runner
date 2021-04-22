@@ -1,5 +1,6 @@
 import React from 'react'
-import { View, Text, StyleSheet } from 'react-native'
+import { View, StyleSheet } from 'react-native'
+import AppText from '../../components/AppText'
 
 const UsersItem = ({ user }) => {
   const { firstName, lastName } = user
@@ -14,11 +15,11 @@ const UsersItem = ({ user }) => {
           backgroundColor,
         }}
       >
-        <Text style={styles.initials}>{initals}</Text>
+        <AppText style={styles.initials}>{initals}</AppText>
       </View>
-      <Text style={styles.name}>
+      <AppText style={styles.name}>
         {firstName} {lastName}
-      </Text>
+      </AppText>
     </View>
   )
 }

@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
-import { Text, View, Dimensions, Image, StyleSheet } from 'react-native'
+import { View, Dimensions, Image, StyleSheet } from 'react-native'
 import Carousel, { Pagination } from 'react-native-snap-carousel'
+import AppText from '../components/AppText'
 
 const SLIDER_WIDTH = Dimensions.get('window').width
 const ITEM_WIDTH = Math.round(SLIDER_WIDTH * 0.8)
@@ -12,13 +13,11 @@ const Album = ({ route }) => {
   } = route
   const [index, setIndex] = useState(0)
 
-  const renderItem = ({ item }) => (
-    <Image source={{ uri: item.url }} style={styles.image} />
-  )
+  const renderItem = ({ item }) => <Image source={{ uri: item.url }} style={styles.image} />
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Album Photos</Text>
+      <AppText style={styles.title}>Album Photos</AppText>
       <Carousel
         layout={'stack'}
         data={photos}

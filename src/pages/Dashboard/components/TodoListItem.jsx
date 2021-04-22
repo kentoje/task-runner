@@ -1,11 +1,12 @@
 import React from 'react'
-import { Text, View, Switch, StyleSheet } from 'react-native'
+import { View, Switch, StyleSheet } from 'react-native'
+import AppText from '../../../components/AppText'
 import { capitalize } from '../../../lib/string'
 
 const TodoListItem = ({ item: { id, title, completed }, callback }) => {
   return (
     <View style={styles.todo}>
-      <Text style={styles.text}>{capitalize(title)}</Text>
+      <AppText style={styles.text}>{capitalize(title)}</AppText>
       <Switch
         onChange={() => {
           callback(id)

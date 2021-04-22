@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 
 import {
   Modal,
-  Text,
   Button,
   TextInput,
   StyleSheet,
@@ -11,6 +10,7 @@ import {
   Platform,
 } from 'react-native'
 import { v4 as uuidv4 } from 'uuid'
+import AppText from '../../../components/AppText'
 
 const TodalModal = ({ modalVisible, closeModal, currentUser, addTodo }) => {
   const [inputValue, setInputValue] = useState('')
@@ -27,7 +27,7 @@ const TodalModal = ({ modalVisible, closeModal, currentUser, addTodo }) => {
       }}
     >
       <View style={styles.container}>
-        <Text style={styles.title}>What do you need to do?</Text>
+        <AppText style={styles.title}>What do you need to do?</AppText>
         <TextInput
           onChangeText={(event) => {
             setInputValue(event)

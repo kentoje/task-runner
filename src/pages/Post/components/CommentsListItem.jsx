@@ -1,5 +1,6 @@
 import React from 'react'
-import { Text, View, StyleSheet } from 'react-native'
+import { View, StyleSheet } from 'react-native'
+import AppText from '../../../components/AppText'
 import { capitalize } from '../../../lib/string'
 
 const CommentsListItem = ({ item }) => {
@@ -7,8 +8,8 @@ const CommentsListItem = ({ item }) => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.name}>{name} says:</Text>
-      <Text>{`${capitalize(item.body)}.`}</Text>
+      <AppText style={styles.name}>{name} says:</AppText>
+      <AppText>{`${capitalize(item.body)}.`}</AppText>
     </View>
   )
 }

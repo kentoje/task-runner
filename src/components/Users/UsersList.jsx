@@ -1,6 +1,7 @@
 import React from 'react'
-import { FlatList, View, Text, StyleSheet } from 'react-native'
+import { FlatList, View, StyleSheet } from 'react-native'
 import { TouchableHighlight } from 'react-native-gesture-handler'
+import AppText from '../../components/AppText'
 import UsersItem from './UsersItem'
 
 const UsersList = ({ users, navigate }) => {
@@ -20,11 +21,11 @@ const UsersList = ({ users, navigate }) => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Users</Text>
+      <AppText style={styles.title}>Users</AppText>
       {users.length ? (
         <FlatList data={users} renderItem={renderItem} keyExtractor={(user) => String(user.id)} />
       ) : (
-        <Text>No user found...</Text>
+        <AppText>No user found...</AppText>
       )}
     </View>
   )

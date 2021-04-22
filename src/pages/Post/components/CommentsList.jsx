@@ -1,6 +1,7 @@
 import React from 'react'
-import { Text, View, StyleSheet } from 'react-native'
+import { View, StyleSheet } from 'react-native'
 import { FlatList } from 'react-native-gesture-handler'
+import AppText from '../../../components/AppText'
 import CommentsListItem from './CommentsListItem'
 
 const CommentsList = ({ comments }) => {
@@ -8,7 +9,7 @@ const CommentsList = ({ comments }) => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Comments</Text>
+      <AppText style={styles.title}>Comments</AppText>
       <FlatList
         data={comments}
         renderItem={renderItem}

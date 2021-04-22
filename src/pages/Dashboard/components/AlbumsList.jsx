@@ -1,6 +1,7 @@
 import React from 'react'
-import { Text, View, StyleSheet } from 'react-native'
+import { View, StyleSheet } from 'react-native'
 import { FlatList } from 'react-native-gesture-handler'
+import AppText from '../../../components/AppText'
 import AlbumsListItem from './AlbumsListItem'
 
 const AlbumsList = ({ albums, navigate }) => {
@@ -8,7 +9,7 @@ const AlbumsList = ({ albums, navigate }) => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Albums</Text>
+      <AppText style={styles.title}>Albums</AppText>
       <FlatList data={albums} renderItem={renderItem} keyExtractor={(album) => String(album.id)} />
     </View>
   )

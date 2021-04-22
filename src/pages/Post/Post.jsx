@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react'
-import { View, Text, ScrollView, TextInput, Button, StyleSheet } from 'react-native'
+import { View, ScrollView, TextInput, Button, StyleSheet } from 'react-native'
 import CommentsList from './components/CommentsList'
 import Loader from '../../components/Loader'
 import { v4 as uuidv4 } from 'uuid'
 import { capitalize } from '../../lib/string'
+import AppText from '../../components/AppText'
 
 const Post = ({ route }) => {
   const {
@@ -31,8 +32,8 @@ const Post = ({ route }) => {
   return (
     <View style={styles.container}>
       <ScrollView>
-        <Text style={styles.title}>{capitalize(post.title)}</Text>
-        <Text style={styles.description}>{capitalize(post.body)}</Text>
+        <AppText style={styles.title}>{capitalize(post.title)}</AppText>
+        <AppText style={styles.description}>{capitalize(post.body)}</AppText>
         <View style={styles.commentForm}>
           <TextInput
             style={styles.input}

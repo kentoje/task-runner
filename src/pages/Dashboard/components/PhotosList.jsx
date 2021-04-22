@@ -1,6 +1,7 @@
 import React from 'react'
-import { View, StyleSheet, Text } from 'react-native'
+import { View, StyleSheet } from 'react-native'
 import { FlatList } from 'react-native-gesture-handler'
+import AppText from '../../../components/AppText'
 import PhotosListItem from './PhotosListItem'
 
 const PhotosList = ({ photos }) => {
@@ -15,7 +16,7 @@ const PhotosList = ({ photos }) => {
       <>
         <PhotosListItem item={item} />
         <View style={styles.countWrapper}>
-          <Text style={styles.itemLeft}>+{photosLeft}</Text>
+          <AppText style={styles.itemLeft}>+{photosLeft}</AppText>
         </View>
       </>
     )

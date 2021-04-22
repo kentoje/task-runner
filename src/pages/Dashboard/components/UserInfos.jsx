@@ -1,18 +1,19 @@
 import React from 'react'
-import { Text, View, StyleSheet } from 'react-native'
+import { View, StyleSheet } from 'react-native'
 import Map from '../../../components/Map'
 import { getMarkersFromUsers } from '../../../lib/map'
+import AppText from '../../../components/AppText'
 
 const UserInfos = ({ user }) => {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>User Informations</Text>
-      <Text style={styles.item}>
+      <AppText style={styles.title}>User Informations</AppText>
+      <AppText style={styles.item}>
         {user.firstName} {user.lastName}
-      </Text>
-      <Text style={styles.item}>{user.companyName}</Text>
-      <Text style={styles.item}>{user.email}</Text>
-      <Text style={[styles.item, styles.phone]}>{user.phone}</Text>
+      </AppText>
+      <AppText style={styles.item}>{user.companyName}</AppText>
+      <AppText style={styles.item}>{user.email}</AppText>
+      <AppText style={[styles.item, styles.phone]}>{user.phone}</AppText>
       <Map style={styles.map} data={getMarkersFromUsers([user])} navigate={() => {}} />
     </View>
   )

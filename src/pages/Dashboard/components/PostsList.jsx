@@ -1,6 +1,7 @@
 import React from 'react'
-import { Text, View, StyleSheet } from 'react-native'
+import { View, StyleSheet } from 'react-native'
 import { FlatList, TouchableHighlight } from 'react-native-gesture-handler'
+import AppText from '../../../components/AppText'
 import PostsListItem from './PostsListItem'
 
 const PostsList = ({ posts, navigate }) => {
@@ -17,7 +18,7 @@ const PostsList = ({ posts, navigate }) => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Posts</Text>
+      <AppText style={styles.title}>Posts</AppText>
       <FlatList data={posts} renderItem={renderItem} keyExtractor={(post) => String(post.id)} />
     </View>
   )

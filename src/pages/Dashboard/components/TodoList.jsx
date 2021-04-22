@@ -1,6 +1,7 @@
 import React from 'react'
-import { Text, View, StyleSheet, FlatList, TouchableHighlight } from 'react-native'
+import { View, StyleSheet, FlatList, TouchableHighlight } from 'react-native'
 import TodoListItem from './TodoListItem'
+import AppText from '../../../components/AppText'
 
 const TodoList = ({ todos, addTodo, toggleTodo, openModal }) => {
   const renderItem = ({ item }) => <TodoListItem item={item} callback={toggleTodo} />
@@ -9,17 +10,7 @@ const TodoList = ({ todos, addTodo, toggleTodo, openModal }) => {
     <>
       <View style={styles.container}>
         <View style={styles.header}>
-          <Text style={styles.title}>Todo List</Text>
-          {/* <TouchableHighlight
-            onPress={() => {
-              openModal()
-            }}
-            underlayColor={'#E9E9E944'}
-          >
-            <View style={styles.buttonWrapper}>
-              <Text style={styles.button}>+</Text>
-            </View>
-          </TouchableHighlight> */}
+          <AppText style={styles.title}>Todo List</AppText>
         </View>
         <TouchableHighlight
           onPress={() => {
@@ -28,7 +19,7 @@ const TodoList = ({ todos, addTodo, toggleTodo, openModal }) => {
           underlayColor={'#E9E9E944'}
         >
           <View style={styles.buttonWrapper}>
-            <Text style={styles.button}>+</Text>
+            <AppText style={styles.button}>+</AppText>
           </View>
         </TouchableHighlight>
         <FlatList data={todos} renderItem={renderItem} keyExtractor={(todo) => String(todo.id)} />
