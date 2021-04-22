@@ -6,15 +6,25 @@ import { capitalize } from '../../../lib/string'
 import AppText from '../../../components/AppText'
 
 const AlbumsListItem = ({ item, navigate }) => {
-  const [photos, setPhotos] = useState([])
+  const [photos, setPhotos] = useState(null)
 
   useEffect(() => {
     ;(async () => {
-      const albumsUrl = `https://jsonplaceholder.typicode.com${item.photos}`
-      const response = await fetch(albumsUrl)
-      const data = await response.json()
+      try {
+        const albumsUrl = `https://jsonplaceholder.typicode.com${item.photos}`
+        const response = await fetch(albumsUrl)
 
-      setPhotos(await serializePhotos(data))
+        if (!response.ok) {
+          setPhotos([])
+          return
+        }
+
+        const data = await response.json()
+
+        setPhotos(await serializePhotos(data))
+      } catch (err) {
+        console.error(err)
+      }
     })()
   }, [item])
 
@@ -22,7 +32,7 @@ const AlbumsListItem = ({ item, navigate }) => {
     <TouchableHighlight onPress={() => navigate('Album', { photos })} underlayColor={'#E9E9E944'}>
       <View style={styles.container}>
         <AppText style={styles.title}>{capitalize(item.title)}</AppText>
-        {photos.length ? (
+        {photos ? (
           <PhotosList photos={photos} />
         ) : (
           <ActivityIndicator size="small" color="#007BC3" />

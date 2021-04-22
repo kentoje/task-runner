@@ -9,6 +9,8 @@ const fullName = (name) => {
   }
 }
 
+const random = (min = 1, max = 3) => Math.floor(Math.random() * (max - min)) + min
+
 const serializeUsers = (users) =>
   users.map(({ id, name, username, email, phone, company, address }) => ({
     id,
@@ -36,7 +38,7 @@ const serializeAlbums = (albums) =>
 // Slicing photos for now, and replacing actual links with picsum...
 const checkPhotosAvailability = (photos) =>
   Promise.all(
-    photos.slice(0, Math.round(photos.length / 10)).map((photo, index) =>
+    photos.slice(0, random(1, 15)).map((photo, index) =>
       fetch(`https://picsum.photos/id/${photo.id}/500`)
         .then((res) => ({
           ...photo,

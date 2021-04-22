@@ -5,9 +5,10 @@ import AppText from '../../../components/AppText'
 import PhotosListItem from './PhotosListItem'
 
 const PhotosList = ({ photos }) => {
-  const previews = photos.slice(0, 3)
-  const [{ count }] = photos.slice(-1)
-  const photosLeft = count - previews.length
+  const previews = photos?.slice(0, 3) || []
+  const photosLeft = photos[photos.length - 1]?.count
+    ? photos[photos.length - 1]?.count - previews.length
+    : null
 
   const renderItem = ({ item }) =>
     item.count !== previews.length ? (
@@ -15,21 +16,29 @@ const PhotosList = ({ photos }) => {
     ) : (
       <>
         <PhotosListItem item={item} />
-        <View style={styles.countWrapper}>
-          <AppText style={styles.itemLeft}>+{photosLeft}</AppText>
-        </View>
+        {photosLeft > 0 ? (
+          <View style={styles.countWrapper}>
+            <AppText style={styles.itemLeft}>+{photosLeft}</AppText>
+          </View>
+        ) : null}
       </>
     )
 
   return (
-    <View style={styles.container}>
-      <FlatList
-        data={previews}
-        horizontal
-        renderItem={renderItem}
-        keyExtractor={(photo) => String(photo.id)}
-      />
-    </View>
+    <>
+      {photos.length ? (
+        <View style={styles.container}>
+          <FlatList
+            data={previews}
+            horizontal
+            renderItem={renderItem}
+            keyExtractor={(photo) => String(photo.id)}
+          />
+        </View>
+      ) : (
+        <AppText>No photos...</AppText>
+      )}
+    </>
   )
 }
 
