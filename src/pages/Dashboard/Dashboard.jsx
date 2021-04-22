@@ -14,10 +14,10 @@ const Dashboard = ({ route, navigation }) => {
     params: { userId },
   } = route
 
-  const [currentUser, setCurrentUser] = useState()
-  const [todos, setTodos] = useState([])
-  const [albums, setAlbums] = useState([])
-  const [posts, setPosts] = useState([])
+  const [currentUser, setCurrentUser] = useState(null)
+  const [todos, setTodos] = useState(null)
+  const [albums, setAlbums] = useState(null)
+  const [posts, setPosts] = useState(null)
   const [modalVisible, setModalVisible] = useState(false)
 
   const navigate = (page, params = {}) => {
@@ -48,11 +48,16 @@ const Dashboard = ({ route, navigation }) => {
   useEffect(() => {
     ;(async () => {
       if (currentUser) {
-        const todoUrl = `https://jsonplaceholder.typicode.com${currentUser.todos}`
-        const response = await fetch(todoUrl)
-        const data = await response.json()
+        try {
+          const todoUrl = `https://jsonplaceholder.typicode.com${currentUser.todos}`
+          const response = await fetch(todoUrl)
+          const data = await response.json()
 
-        setTodos(data)
+          setTodos(data)
+        } catch (err) {
+          console.error(err)
+          setTodos([])
+        }
       }
     })()
   }, [currentUser])
@@ -60,11 +65,16 @@ const Dashboard = ({ route, navigation }) => {
   useEffect(() => {
     ;(async () => {
       if (currentUser) {
-        const albumsUrl = `https://jsonplaceholder.typicode.com${currentUser.albums}`
-        const response = await fetch(albumsUrl)
-        const data = await response.json()
+        try {
+          const albumsUrl = `https://jsonplaceholder.typicode.com${currentUser.albums}`
+          const response = await fetch(albumsUrl)
+          const data = await response.json()
 
-        setAlbums(serializeAlbums(data))
+          setAlbums(serializeAlbums(data))
+        } catch (err) {
+          console.error(err)
+          setAlbums([])
+        }
       }
     })()
   }, [currentUser])
@@ -72,11 +82,16 @@ const Dashboard = ({ route, navigation }) => {
   useEffect(() => {
     ;(async () => {
       if (currentUser) {
-        const postsUrl = `https://jsonplaceholder.typicode.com${currentUser.posts}`
-        const response = await fetch(postsUrl)
-        const data = await response.json()
+        try {
+          const postsUrl = `https://jsonplaceholder.typicode.com${currentUser.posts}`
+          const response = await fetch(postsUrl)
+          const data = await response.json()
 
-        setPosts(data)
+          setPosts(data)
+        } catch (err) {
+          console.error(err)
+          setPosts([])
+        }
       }
     })()
   }, [currentUser])
@@ -93,7 +108,7 @@ const Dashboard = ({ route, navigation }) => {
           />
           <ScrollView style={styles.container}>
             <UserInfos user={currentUser} />
-            {todos.length ? (
+            {todos && todos.length ? (
               <TodoList
                 todos={todos}
                 addTodo={addTodo}
@@ -101,12 +116,12 @@ const Dashboard = ({ route, navigation }) => {
                 openModal={openModal}
               />
             ) : null}
-            {albums.length ? <AlbumsList albums={albums} navigate={navigate} /> : null}
-            {posts.length ? <PostsList posts={posts} navigate={navigate} /> : null}
+            {albums && albums.length ? <AlbumsList albums={albums} navigate={navigate} /> : null}
+            {posts && posts.length ? <PostsList posts={posts} navigate={navigate} /> : null}
           </ScrollView>
         </>
       ) : null}
-      {!currentUser || !todos.length || !albums.length || !posts.length ? <Loader /> : null}
+      {!currentUser || todos === null || albums === null || posts === null ? <Loader /> : null}
     </>
   )
 }

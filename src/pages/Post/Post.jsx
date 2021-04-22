@@ -75,12 +75,9 @@ const Post = ({ route }) => {
             disabled={!inputValue?.length || !email?.length || !email?.includes('@')}
           />
         </View>
-        {comments ? (
-          <CommentsList comments={comments} />
-        ) : (
-          <ActivityIndicator size="small" color="#007BC3" />
-        )}
+        {comments && comments.length ? <CommentsList comments={comments} /> : null}
       </ScrollView>
+      {comments === null ? <ActivityIndicator size="small" color="#007BC3" /> : null}
     </View>
   )
 }
