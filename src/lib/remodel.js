@@ -1,4 +1,5 @@
 import { pickColor } from './colors'
+import COORDINATES from '../data/coordinates'
 
 const fullName = (name) => {
   const [firstName, lastName] = name.split(' ')
@@ -12,22 +13,28 @@ const fullName = (name) => {
 const random = (min = 1, max = 3) => Math.floor(Math.random() * (max - min)) + min
 
 const remodelUsers = (users) =>
-  users.map(({ id, name, username, email, phone, company, address }) => ({
-    id,
-    ...fullName(name),
-    username,
-    companyName: company.name,
-    email,
-    phone,
-    geoCode: {
-      lat: Number(address.geo.lat),
-      lng: Number(address.geo.lng),
-    },
-    todos: `/todos?userId=${id}`,
-    albums: `/albums?userId=${id}`,
-    posts: `/posts?userId=${id}`,
-    color: pickColor(id),
-  }))
+  users.map(({ id, name, username, email, phone, company }) => {
+    const {
+      geoCode: { lat, lng },
+    } = COORDINATES[random(0, COORDINATES.length)]
+
+    return {
+      id,
+      ...fullName(name),
+      username,
+      companyName: company.name,
+      email,
+      phone,
+      geoCode: {
+        lat,
+        lng,
+      },
+      todos: `/todos?userId=${id}`,
+      albums: `/albums?userId=${id}`,
+      posts: `/posts?userId=${id}`,
+      color: pickColor(id),
+    }
+  })
 
 const remodelAlbums = (albums) =>
   albums.map((album) => ({
