@@ -1,16 +1,15 @@
 import React from 'react'
 import { View, StyleSheet } from 'react-native'
-import { FlatList } from 'react-native-gesture-handler'
 import AppText from '../../../components/AppText'
 import AlbumsListItem from './AlbumsListItem'
 
 const AlbumsList = ({ albums, navigate }) => {
-  const renderItem = ({ item }) => <AlbumsListItem item={item} navigate={navigate} />
+  const renderItem = (item) => <AlbumsListItem item={item} navigate={navigate} key={item.id} />
 
   return (
     <View style={styles.container}>
       <AppText style={styles.title}>Albums</AppText>
-      <FlatList data={albums} renderItem={renderItem} keyExtractor={(album) => String(album.id)} />
+      {albums.map(renderItem)}
     </View>
   )
 }

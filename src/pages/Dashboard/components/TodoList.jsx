@@ -1,10 +1,10 @@
 import React from 'react'
-import { View, StyleSheet, FlatList, TouchableHighlight } from 'react-native'
+import { View, StyleSheet, TouchableHighlight } from 'react-native'
 import TodoListItem from './TodoListItem'
 import AppText from '../../../components/AppText'
 
-const TodoList = ({ todos, addTodo, toggleTodo, openModal }) => {
-  const renderItem = ({ item }) => <TodoListItem item={item} callback={toggleTodo} />
+const TodoList = ({ todos, toggleTodo, openModal }) => {
+  const renderItem = (item) => <TodoListItem item={item} callback={toggleTodo} key={item.id} />
 
   return (
     <>
@@ -22,7 +22,7 @@ const TodoList = ({ todos, addTodo, toggleTodo, openModal }) => {
             <AppText style={styles.button}>+</AppText>
           </View>
         </TouchableHighlight>
-        <FlatList data={todos} renderItem={renderItem} keyExtractor={(todo) => String(todo.id)} />
+        {todos.map(renderItem)}
       </View>
     </>
   )

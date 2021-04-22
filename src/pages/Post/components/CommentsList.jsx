@@ -1,20 +1,15 @@
 import React from 'react'
 import { View, StyleSheet } from 'react-native'
-import { FlatList } from 'react-native-gesture-handler'
 import AppText from '../../../components/AppText'
 import CommentsListItem from './CommentsListItem'
 
 const CommentsList = ({ comments }) => {
-  const renderItem = ({ item }) => <CommentsListItem item={item} />
+  const renderItem = (item) => <CommentsListItem item={item} key={item.id} />
 
   return (
     <View style={styles.container}>
       <AppText style={styles.title}>Comments</AppText>
-      <FlatList
-        data={comments}
-        renderItem={renderItem}
-        keyExtractor={(comment) => String(comment.id)}
-      />
+      {comments.map(renderItem)}
     </View>
   )
 }
