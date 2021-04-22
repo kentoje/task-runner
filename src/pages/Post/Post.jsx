@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
-import { View, ScrollView, TextInput, Button, StyleSheet } from 'react-native'
+import { View, ScrollView, TextInput, Button, StyleSheet, ActivityIndicator } from 'react-native'
 import CommentsList from './components/CommentsList'
-import Loader from '../../components/Loader'
 import { v4 as uuidv4 } from 'uuid'
 import { capitalize } from '../../lib/string'
 import AppText from '../../components/AppText'
@@ -65,7 +64,11 @@ const Post = ({ route }) => {
             disabled={!inputValue?.length || !email?.length || !email?.includes('@')}
           />
         </View>
-        {comments.length ? <CommentsList comments={comments} /> : <Loader />}
+        {comments.length ? (
+          <CommentsList comments={comments} />
+        ) : (
+          <ActivityIndicator size="small" color="#007BC3" />
+        )}
       </ScrollView>
     </View>
   )

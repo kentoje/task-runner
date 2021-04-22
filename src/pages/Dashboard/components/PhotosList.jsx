@@ -5,7 +5,7 @@ import AppText from '../../../components/AppText'
 import PhotosListItem from './PhotosListItem'
 
 const PhotosList = ({ photos }) => {
-  const previews = photos.slice(0, -2)
+  const previews = photos.slice(0, 3)
   const [{ count }] = photos.slice(-1)
   const photosLeft = count - previews.length
 

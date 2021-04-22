@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { View, StyleSheet, TouchableHighlight } from 'react-native'
+import { View, StyleSheet, TouchableHighlight, ActivityIndicator } from 'react-native'
 import PhotosList from './PhotosList'
 import { serializePhotos } from '../../../lib/serialize'
 import { capitalize } from '../../../lib/string'
@@ -22,7 +22,11 @@ const AlbumsListItem = ({ item, navigate }) => {
     <TouchableHighlight onPress={() => navigate('Album', { photos })} underlayColor={'#E9E9E944'}>
       <View style={styles.container}>
         <AppText style={styles.title}>{capitalize(item.title)}</AppText>
-        {photos.length ? <PhotosList photos={photos} /> : null}
+        {photos.length ? (
+          <PhotosList photos={photos} />
+        ) : (
+          <ActivityIndicator size="small" color="#007BC3" />
+        )}
       </View>
     </TouchableHighlight>
   )

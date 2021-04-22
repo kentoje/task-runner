@@ -13,7 +13,7 @@ const UserInfos = ({ user }) => {
       </AppText>
       <AppText style={styles.item}>{user.companyName}</AppText>
       <AppText style={styles.item}>{user.email}</AppText>
-      <AppText style={[styles.item, styles.phone]}>{user.phone}</AppText>
+      <AppText style={{ ...styles.item, ...styles.phone }}>{user.phone}</AppText>
       <Map style={styles.map} data={getMarkersFromUsers([user])} navigate={() => {}} />
     </View>
   )

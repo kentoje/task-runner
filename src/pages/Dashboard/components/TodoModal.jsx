@@ -15,7 +15,8 @@ import AppText from '../../../components/AppText'
 const TodalModal = ({ modalVisible, closeModal, currentUser, addTodo }) => {
   const [inputValue, setInputValue] = useState('')
   const cancelBackgroundColor = Platform.OS === 'android' ? 'transparent' : '#F3514E'
-  const submitBackgroundColor = Platform.OS === 'android' ? 'transparent' : '#3AB557'
+  const submitBackgroundColor =
+    Platform.OS === 'android' ? 'transparent' : !inputValue.length ? '#EFEFEF' : '#007BC3'
 
   return (
     <Modal
@@ -56,7 +57,7 @@ const TodalModal = ({ modalVisible, closeModal, currentUser, addTodo }) => {
                 closeModal()
               }}
               title="Submit"
-              color={Platform.OS === 'ios' ? '#fff' : '#3AB557'}
+              color={Platform.OS === 'ios' ? '#fff' : '#007BC3'}
               disabled={!inputValue?.length}
             />
           </TouchableHighlight>
@@ -83,33 +84,37 @@ const TodalModal = ({ modalVisible, closeModal, currentUser, addTodo }) => {
 }
 const styles = StyleSheet.create({
   container: {
-    padding: 8,
+    paddingVertical: 16,
+    paddingHorizontal: 8,
   },
   title: {
-    fontSize: 18,
-    textAlign: 'center',
-    margin: 16,
-    fontWeight: '700',
+    marginBottom: 16,
+    fontSize: 22,
+    fontWeight: 'bold',
   },
   input: {
-    borderWidth: 1,
-    borderColor: 'gainsboro',
-    fontWeight: '500',
-    fontSize: 20,
-    paddingHorizontal: 24,
-    paddingVertical: 16,
+    borderRadius: 4,
+    fontSize: 16,
+    borderColor: '#DFDFDF',
+    backgroundColor: '#F9F9F9',
+    borderWidth: 1.5,
+    paddingVertical: 8,
+    paddingHorizontal: 16,
+    marginBottom: 8,
   },
   buttons: {
     flexDirection: 'row',
-    justifyContent: 'center',
-    marginTop: 24,
+    // backgroundColor: 'red',
+    // justifyContent: 'center',
   },
   button: {
-    padding: 8,
+    flex: 1,
+    // padding: 8,
     fontSize: 16,
+    borderRadius: 4,
   },
   cancel: {
-    marginLeft: 24,
+    marginLeft: 8,
   },
 })
 export default TodalModal

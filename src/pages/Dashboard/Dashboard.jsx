@@ -105,9 +105,8 @@ const Dashboard = ({ route, navigation }) => {
             {posts.length ? <PostsList posts={posts} navigate={navigate} /> : null}
           </ScrollView>
         </>
-      ) : (
-        <Loader />
-      )}
+      ) : null}
+      {!currentUser || !todos.length || !albums.length || !posts.length ? <Loader /> : null}
     </>
   )
 }
