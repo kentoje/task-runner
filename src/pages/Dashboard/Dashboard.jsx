@@ -7,7 +7,7 @@ import AlbumsList from './components/AlbumsList'
 import PostsList from './components/PostsList'
 import Loader from '../../components/Loader'
 import TodoModal from './components/TodoModal'
-import { serializeAlbums } from '../../lib/serialize'
+import { remodelAlbums } from '../../lib/remodel'
 
 const Dashboard = ({ route, navigation }) => {
   const {
@@ -70,7 +70,7 @@ const Dashboard = ({ route, navigation }) => {
           const response = await fetch(albumsUrl)
           const data = await response.json()
 
-          setAlbums(serializeAlbums(data))
+          setAlbums(remodelAlbums(data))
         } catch (err) {
           console.error(err)
           setAlbums([])

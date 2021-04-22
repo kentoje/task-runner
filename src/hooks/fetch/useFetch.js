@@ -3,7 +3,7 @@ import { fetchReducer, initialState } from './reducer'
 import { ENUM_TYPES } from './constants'
 
 /* eslint-disable react-hooks/rules-of-hooks */
-const useFetch = (url) => (serialize) => {
+const useFetch = (url) => (remodel) => {
   const [state, dispatch] = useReducer(fetchReducer, initialState)
 
   useEffect(() => {
@@ -17,7 +17,7 @@ const useFetch = (url) => (serialize) => {
         dispatch({
           type: ENUM_TYPES.complete,
           payload: {
-            response: serialize ? serialize(data) : data,
+            response: remodel ? remodel(data) : data,
           },
         })
       } catch (err) {
@@ -31,7 +31,7 @@ const useFetch = (url) => (serialize) => {
     }
 
     fetchUrl()
-  }, [serialize])
+  }, [remodel])
 
   return [state.result, state.loading, state.error]
 }

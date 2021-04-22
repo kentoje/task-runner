@@ -11,7 +11,7 @@ const fullName = (name) => {
 
 const random = (min = 1, max = 3) => Math.floor(Math.random() * (max - min)) + min
 
-const serializeUsers = (users) =>
+const remodelUsers = (users) =>
   users.map(({ id, name, username, email, phone, company, address }) => ({
     id,
     ...fullName(name),
@@ -29,7 +29,7 @@ const serializeUsers = (users) =>
     color: pickColor(id),
   }))
 
-const serializeAlbums = (albums) =>
+const remodelAlbums = (albums) =>
   albums.map((album) => ({
     ...album,
     photos: `/photos?albumId=${album.id}`,
@@ -51,7 +51,7 @@ const checkPhotosAvailability = (photos) =>
     )
   )
 
-const serializePhotos = async (photos) => {
+const remodelPhotos = async (photos) => {
   const availabilities = await checkPhotosAvailability(photos)
 
   return Promise.all(
@@ -86,4 +86,4 @@ const serializePhotos = async (photos) => {
   )
 }
 
-export { serializeUsers, serializeAlbums, serializePhotos }
+export { remodelUsers, remodelAlbums, remodelPhotos }

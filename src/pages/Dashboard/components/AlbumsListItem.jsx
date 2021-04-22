@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { View, StyleSheet, TouchableHighlight, ActivityIndicator } from 'react-native'
 import PhotosList from './PhotosList'
-import { serializePhotos } from '../../../lib/serialize'
+import { remodelPhotos } from '../../../lib/remodel'
 import { capitalize } from '../../../lib/string'
 import AppText from '../../../components/AppText'
 
@@ -21,7 +21,7 @@ const AlbumsListItem = ({ item, navigate }) => {
 
         const data = await response.json()
 
-        setPhotos(await serializePhotos(data))
+        setPhotos(await remodelPhotos(data))
       } catch (err) {
         console.error(err)
       }
