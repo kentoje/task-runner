@@ -1,8 +1,8 @@
 import React from 'react'
 import { FlatList, View, StyleSheet } from 'react-native'
 import { TouchableHighlight } from 'react-native-gesture-handler'
-import AppText from '../../components/AppText'
-import UsersItem from './UsersItem'
+import AppText from '../../../components/AppText'
+import UsersListItem from './UsersListItem'
 
 const UsersList = ({ users, navigate }) => {
   const renderItem = ({ item, index }) => (
@@ -14,7 +14,7 @@ const UsersList = ({ users, navigate }) => {
         }}
         underlayColor={'#E9E9E944'}
       >
-        <UsersItem user={item} />
+        <UsersListItem user={item} />
       </TouchableHighlight>
     </>
   )

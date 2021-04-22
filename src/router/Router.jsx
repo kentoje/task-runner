@@ -1,5 +1,5 @@
 import React from 'react'
-import Home from '../pages/Home'
+import Home from '../pages/Home/Home'
 import Dashboard from '../pages/Dashboard/Dashboard'
 import Post from '../pages/Post/Post'
 import { createStackNavigator } from '@react-navigation/stack'

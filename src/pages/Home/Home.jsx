@@ -1,11 +1,11 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { StyleSheet, TextInput, View } from 'react-native'
-import UsersList from '../components/Users/UsersList'
-import Loader from '../components/Loader'
-import Map from '../components/Map'
-import { getMarkersFromUsers } from '../lib/map'
-import { UsersContext } from '../context/usersContext'
-import { useFilter } from '../hooks/filter/useFilter'
+import UsersList from './components/UsersList'
+import Loader from '../../components/Loader'
+import Map from '../../components/Map'
+import { getMarkersFromUsers } from '../../lib/map'
+import { UsersContext } from '../../context/usersContext'
+import { useFilter } from '../../hooks/filter/useFilter'
 
 /* eslint-disable react-hooks/exhaustive-deps */
 const Home = ({ navigation }) => {

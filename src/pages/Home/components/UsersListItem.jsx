@@ -1,8 +1,8 @@
 import React from 'react'
 import { View, StyleSheet } from 'react-native'
-import AppText from '../../components/AppText'
+import AppText from '../../../components/AppText'
 
-const UsersItem = ({ user }) => {
+const UsersListItem = ({ user }) => {
   const { firstName, lastName } = user
   const initals = `${firstName.charAt(0)}${lastName.charAt(0)}`
   const backgroundColor = user.color
@@ -49,4 +49,4 @@ const styles = StyleSheet.create({
   },
 })
 
-export default UsersItem
+export default UsersListItem
