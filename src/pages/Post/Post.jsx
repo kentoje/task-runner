@@ -11,7 +11,7 @@ const Post = ({ route }) => {
   } = route
 
   const [email, setEmail] = useState(null)
-  const [comments, setComments] = useState([])
+  const [comments, setComments] = useState(null)
   const [inputValue, setInputValue] = useState(null)
 
   const addComment = (comment) => {
@@ -20,11 +20,22 @@ const Post = ({ route }) => {
 
   useEffect(() => {
     ;(async () => {
-      const commentsUrl = `https://jsonplaceholder.typicode.com/comments?postId=${post.id}`
-      const response = await fetch(commentsUrl)
-      const data = await response.json()
+      try {
+        const commentsUrl = `https://jsonplaceholder.typicode.com/comments?postId=${post.id}`
+        const response = await fetch(commentsUrl)
 
-      setComments(data)
+        if (!response.ok) {
+          setComments([])
+          return
+        }
+
+        const data = await response.json()
+
+        setComments(data)
+      } catch (err) {
+        console.error(err)
+        setComments([])
+      }
     })()
   }, [post])
 
@@ -64,7 +75,7 @@ const Post = ({ route }) => {
             disabled={!inputValue?.length || !email?.length || !email?.includes('@')}
           />
         </View>
-        {comments.length ? (
+        {comments ? (
           <CommentsList comments={comments} />
         ) : (
           <ActivityIndicator size="small" color="#007BC3" />
