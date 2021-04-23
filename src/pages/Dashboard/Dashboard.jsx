@@ -49,7 +49,7 @@ const Dashboard = ({ route, navigation }) => {
     ;(async () => {
       if (currentUser) {
         try {
-          const todoUrl = `https://jsonplaceholder.typicode.com${currentUser.todos}`
+          const todoUrl = `https://jsonplaceholder.cypress.io${currentUser.todos}`
           const response = await fetch(todoUrl)
           const data = await response.json()
 
@@ -66,7 +66,7 @@ const Dashboard = ({ route, navigation }) => {
     ;(async () => {
       if (currentUser) {
         try {
-          const albumsUrl = `https://jsonplaceholder.typicode.com${currentUser.albums}`
+          const albumsUrl = `https://jsonplaceholder.cypress.io${currentUser.albums}`
           const response = await fetch(albumsUrl)
           const data = await response.json()
 
@@ -83,7 +83,7 @@ const Dashboard = ({ route, navigation }) => {
     ;(async () => {
       if (currentUser) {
         try {
-          const postsUrl = `https://jsonplaceholder.typicode.com${currentUser.posts}`
+          const postsUrl = `https://jsonplaceholder.cypress.io${currentUser.posts}`
           const response = await fetch(postsUrl)
           const data = await response.json()
 

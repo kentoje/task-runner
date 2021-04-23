@@ -21,7 +21,7 @@ const Post = ({ route }) => {
   useEffect(() => {
     ;(async () => {
       try {
-        const commentsUrl = `https://jsonplaceholder.typicode.com/comments?postId=${post.id}`
+        const commentsUrl = `https://jsonplaceholder.cypress.io/comments?postId=${post.id}`
         const response = await fetch(commentsUrl)
 
         if (!response.ok) {

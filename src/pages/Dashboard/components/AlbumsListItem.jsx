@@ -11,7 +11,7 @@ const AlbumsListItem = ({ item, navigate }) => {
   useEffect(() => {
     ;(async () => {
       try {
-        const albumsUrl = `https://jsonplaceholder.typicode.com${item.photos}`
+        const albumsUrl = `https://jsonplaceholder.cypress.io${item.photos}`
         const response = await fetch(albumsUrl)
 
         if (!response.ok) {
