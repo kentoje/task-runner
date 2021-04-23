@@ -1,6 +1,7 @@
 import React, { useReducer, useEffect } from 'react'
 import { fetchReducer, initialState } from './reducer'
 import { ENUM_TYPES } from './constants'
+import USERS from '../../mocks/users'
 
 /* eslint-disable react-hooks/rules-of-hooks */
 const useFetch = (url) => (remodel) => {
@@ -12,6 +13,26 @@ const useFetch = (url) => (remodel) => {
     const fetchUrl = async () => {
       try {
         const response = await fetch(url)
+
+        if (!response.ok) {
+          dispatch({
+            type: ENUM_TYPES.complete,
+            payload: {
+              response: remodel ? remodel(USERS) : USERS,
+            },
+          })
+
+          // Error behavior
+          // dispatch({
+          //   type: ENUM_TYPES.error,
+          //   payload: {
+          //     error: response,
+          //   },
+          // })
+
+          return
+        }
+
         const data = await response.json()
 
         dispatch({

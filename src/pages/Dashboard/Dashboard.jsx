@@ -8,6 +8,9 @@ import PostsList from './components/PostsList'
 import Loader from '../../components/Loader'
 import TodoModal from './components/TodoModal'
 import { remodelAlbums } from '../../lib/remodel'
+import TODOS from '../../mocks/todos'
+import ALBUMS from '../../mocks/albums'
+import POSTS from '../../mocks/posts'
 
 const Dashboard = ({ route, navigation }) => {
   const {
@@ -51,6 +54,12 @@ const Dashboard = ({ route, navigation }) => {
         try {
           const todoUrl = `https://jsonplaceholder.cypress.io${currentUser.todos}`
           const response = await fetch(todoUrl)
+
+          if (!response.ok) {
+            setTodos(TODOS)
+            return
+          }
+
           const data = await response.json()
 
           setTodos(data)
@@ -68,6 +77,12 @@ const Dashboard = ({ route, navigation }) => {
         try {
           const albumsUrl = `https://jsonplaceholder.cypress.io${currentUser.albums}`
           const response = await fetch(albumsUrl)
+
+          if (!response.ok) {
+            setAlbums(remodelAlbums(ALBUMS))
+            return
+          }
+
           const data = await response.json()
 
           setAlbums(remodelAlbums(data))
@@ -85,6 +100,12 @@ const Dashboard = ({ route, navigation }) => {
         try {
           const postsUrl = `https://jsonplaceholder.cypress.io${currentUser.posts}`
           const response = await fetch(postsUrl)
+
+          if (!response.ok) {
+            setPosts(POSTS)
+            return
+          }
+
           const data = await response.json()
 
           setPosts(data)

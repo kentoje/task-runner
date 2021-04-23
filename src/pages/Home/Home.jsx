@@ -6,10 +6,11 @@ import Map from '../../components/Map'
 import { getMarkersFromUsers } from '../../lib/map'
 import { UsersContext } from '../../context/usersContext'
 import { useFilter } from '../../hooks/filter/useFilter'
+import Error from '../../components/Error'
 
 /* eslint-disable react-hooks/exhaustive-deps */
 const Home = ({ navigation }) => {
-  const { users, loading } = useContext(UsersContext)
+  const { users, loading, error } = useContext(UsersContext)
   const [state, filter] = useFilter()
   const [focusFilter, setFocusFilter] = useState(false)
 
@@ -19,14 +20,16 @@ const Home = ({ navigation }) => {
 
   // TODO: Refacto this crap!
   useEffect(() => {
-    if (!loading) {
+    if (!error && !loading) {
       filter(users, '')
     }
   }, [loading])
 
   return (
     <>
-      {!loading ? (
+      {error ? (
+        <Error error={error} />
+      ) : !loading ? (
         <View style={styles.container}>
           <View style={styles.userWrapper}>
             <View style={styles.inputWrapper}>
