@@ -15,7 +15,7 @@ const AlbumsListItem = ({ item, navigate }) => {
         const albumsUrl = `https://jsonplaceholder.cypress.io${item.photos}`
         const response = await fetch(albumsUrl)
 
-        if (!response.ok) {
+        if (!response.ok || global.mocks) {
           const [albumId] = item.photos.match(/[0-9]/)
           setPhotos(
             await remodelPhotos(PHOTOS.filter((photo) => photo.albumId === Number(albumId)))

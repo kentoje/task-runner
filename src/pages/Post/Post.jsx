@@ -25,7 +25,7 @@ const Post = ({ route }) => {
         const commentsUrl = `https://jsonplaceholder.cypress.io/comments?postId=${post.id}`
         const response = await fetch(commentsUrl)
 
-        if (!response.ok) {
+        if (!response.ok || global.mocks) {
           setComments(COMMENTS.filter((comment) => comment.postId === post.id))
           return
         }

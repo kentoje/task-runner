@@ -14,7 +14,7 @@ const useFetch = (url) => (remodel) => {
       try {
         const response = await fetch(url)
 
-        if (!response.ok) {
+        if (!response.ok || global.mocks) {
           dispatch({
             type: ENUM_TYPES.complete,
             payload: {

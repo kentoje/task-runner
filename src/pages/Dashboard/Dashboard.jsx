@@ -55,7 +55,7 @@ const Dashboard = ({ route, navigation }) => {
           const todoUrl = `https://jsonplaceholder.cypress.io${currentUser.todos}`
           const response = await fetch(todoUrl)
 
-          if (!response.ok) {
+          if (!response.ok || global.mocks) {
             setTodos(TODOS)
             return
           }
@@ -78,7 +78,7 @@ const Dashboard = ({ route, navigation }) => {
           const albumsUrl = `https://jsonplaceholder.cypress.io${currentUser.albums}`
           const response = await fetch(albumsUrl)
 
-          if (!response.ok) {
+          if (!response.ok || global.mocks) {
             setAlbums(remodelAlbums(ALBUMS))
             return
           }
@@ -101,7 +101,7 @@ const Dashboard = ({ route, navigation }) => {
           const postsUrl = `https://jsonplaceholder.cypress.io${currentUser.posts}`
           const response = await fetch(postsUrl)
 
-          if (!response.ok) {
+          if (!response.ok || global.mocks) {
             setPosts(POSTS)
             return
           }

@@ -18,7 +18,6 @@ const Home = ({ navigation }) => {
     navigation.navigate('Dashboard', { userId: id })
   }
 
-  // TODO: Refacto this crap!
   useEffect(() => {
     if (!error && !loading) {
       filter(users, '')

@@ -5,6 +5,7 @@ import 'react-native-get-random-values'
 import { Montserrat_500Medium, Montserrat_700Bold } from '@expo-google-fonts/montserrat'
 import { useFonts } from 'expo-font'
 import Loader from './src/components/Loader'
+import './config/global'
 
 const App = () => {
   const [isLoaded] = useFonts({ Montserrat_500Medium, Montserrat_700Bold })
