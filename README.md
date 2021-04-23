@@ -2,6 +2,8 @@
 
 TP Solution Mobile - React Native
 
+[Slides](https://docs.google.com/presentation/d/1mM6WyiaIVClR7YNIRWU73z70ru0nu-_EIXAuGdfjVHo/edit?usp=sharing)
+
 ## Groupe 12
 
 - Julian ROMANA
