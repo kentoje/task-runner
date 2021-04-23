@@ -4,6 +4,7 @@ import PhotosList from './PhotosList'
 import { remodelPhotos } from '../../../lib/remodel'
 import { capitalize } from '../../../lib/string'
 import AppText from '../../../components/AppText'
+import PHOTOS from '../../../mocks/photos'
 
 const AlbumsListItem = ({ item, navigate }) => {
   const [photos, setPhotos] = useState(null)
@@ -15,7 +16,11 @@ const AlbumsListItem = ({ item, navigate }) => {
         const response = await fetch(albumsUrl)
 
         if (!response.ok) {
-          setPhotos([])
+          const [albumId] = item.photos.match(/[0-9]/)
+          setPhotos(
+            await remodelPhotos(PHOTOS.filter((photo) => photo.albumId === Number(albumId)))
+          )
+          // setPhotos([])
           return
         }
 

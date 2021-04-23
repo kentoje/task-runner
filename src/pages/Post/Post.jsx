@@ -4,6 +4,7 @@ import CommentsList from './components/CommentsList'
 import { v4 as uuidv4 } from 'uuid'
 import { capitalize } from '../../lib/string'
 import AppText from '../../components/AppText'
+import COMMENTS from '../../mocks/comments'
 
 const Post = ({ route }) => {
   const {
@@ -25,7 +26,7 @@ const Post = ({ route }) => {
         const response = await fetch(commentsUrl)
 
         if (!response.ok) {
-          setComments([])
+          setComments(COMMENTS.filter((comment) => comment.postId === post.id))
           return
         }
 
